@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#4f46e5"/>
+      <stop offset="1" stop-color="#9333ea"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <g transform="translate(256 262) scale(0.86) translate(-256 -256)">
+    <!-- Casque -->
+    <path d="M104 300v-46a152 152 0 0 1 304 0v46" fill="none" stroke="#fff" stroke-width="38" stroke-linecap="round"/>
+    <rect x="70" y="276" width="86" height="142" rx="38" fill="#fff"/>
+    <rect x="356" y="276" width="86" height="142" rx="38" fill="#fff"/>
+    <!-- Bulle -->
+    <path d="M186 220h140a32 32 0 0 1 32 32v76a32 32 0 0 1-32 32h-66l-48 40v-40h-26a32 32 0 0 1-32-32v-76a32 32 0 0 1 32-32z" fill="#fde68a"/>
+    <g fill="#6d28d9">
+      <circle cx="218" cy="290" r="13"/>
+      <circle cx="256" cy="290" r="13"/>
+      <circle cx="294" cy="290" r="13"/>
+    </g>
+  </g>
+</svg>

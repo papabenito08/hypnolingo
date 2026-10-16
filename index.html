@@ -1,0 +1,2022 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HypnoLingo - Relaxation et mémorisation des langues</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#6366f1">
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <style>
+/*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */
+@layer properties;
+@layer theme, base, components, utilities;
+@layer theme {
+  :root, :host {
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol", "Noto Color Emoji";
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+      "Courier New", monospace;
+    --color-amber-300: oklch(87.9% 0.169 91.605);
+    --color-amber-500: oklch(76.9% 0.188 70.08);
+    --color-emerald-300: oklch(84.5% 0.143 164.978);
+    --color-emerald-400: oklch(76.5% 0.177 163.223);
+    --color-emerald-500: oklch(69.6% 0.17 162.48);
+    --color-emerald-600: oklch(59.6% 0.145 163.225);
+    --color-emerald-900: oklch(37.8% 0.077 168.94);
+    --color-indigo-200: oklch(87% 0.065 274.039);
+    --color-indigo-300: oklch(78.5% 0.115 274.713);
+    --color-indigo-400: oklch(67.3% 0.182 276.935);
+    --color-indigo-500: oklch(58.5% 0.233 277.117);
+    --color-indigo-600: oklch(51.1% 0.262 276.966);
+    --color-indigo-900: oklch(35.9% 0.144 278.697);
+    --color-indigo-950: oklch(25.7% 0.09 281.288);
+    --color-purple-300: oklch(82.7% 0.119 306.383);
+    --color-purple-400: oklch(71.4% 0.203 305.504);
+    --color-purple-500: oklch(62.7% 0.265 303.9);
+    --color-purple-600: oklch(55.8% 0.288 302.321);
+    --color-purple-900: oklch(38.1% 0.176 304.987);
+    --color-rose-300: oklch(81% 0.117 11.638);
+    --color-rose-400: oklch(71.2% 0.194 13.428);
+    --color-rose-500: oklch(64.5% 0.246 16.439);
+    --color-rose-600: oklch(58.6% 0.253 17.585);
+    --color-rose-900: oklch(41% 0.159 10.272);
+    --color-slate-100: oklch(96.8% 0.007 247.896);
+    --color-slate-200: oklch(92.9% 0.013 255.508);
+    --color-slate-300: oklch(86.9% 0.022 252.894);
+    --color-slate-400: oklch(70.4% 0.04 256.788);
+    --color-slate-500: oklch(55.4% 0.046 257.417);
+    --color-slate-600: oklch(44.6% 0.043 257.281);
+    --color-slate-700: oklch(37.2% 0.044 257.287);
+    --color-slate-800: oklch(27.9% 0.041 260.031);
+    --color-slate-900: oklch(20.8% 0.042 265.755);
+    --color-white: #fff;
+    --spacing: 0.25rem;
+    --container-md: 28rem;
+    --container-3xl: 48rem;
+    --text-xs: 0.75rem;
+    --text-xs--line-height: calc(1 / 0.75);
+    --text-sm: 0.875rem;
+    --text-sm--line-height: calc(1.25 / 0.875);
+    --text-lg: 1.125rem;
+    --text-lg--line-height: calc(1.75 / 1.125);
+    --text-xl: 1.25rem;
+    --text-xl--line-height: calc(1.75 / 1.25);
+    --text-2xl: 1.5rem;
+    --text-2xl--line-height: calc(2 / 1.5);
+    --text-3xl: 1.875rem;
+    --text-3xl--line-height: calc(2.25 / 1.875);
+    --text-4xl: 2.25rem;
+    --text-4xl--line-height: calc(2.5 / 2.25);
+    --font-weight-light: 300;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --tracking-widest: 0.1em;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-2xl: 1rem;
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --blur-md: 12px;
+    --default-transition-duration: 150ms;
+    --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    --default-font-family: var(--font-sans);
+    --default-mono-font-family: var(--font-mono);
+    --color-darkbg: #080c14;
+    --color-cardbg: #0f172a;
+  }
+}
+@layer base {
+  *, ::after, ::before, ::backdrop, ::file-selector-button {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0 solid;
+  }
+  html, :host {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    font-family: var(--default-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
+    font-feature-settings: var(--default-font-feature-settings, normal);
+    font-variation-settings: var(--default-font-variation-settings, normal);
+    -webkit-tap-highlight-color: transparent;
+  }
+  hr {
+    height: 0;
+    color: inherit;
+    border-top-width: 1px;
+  }
+  abbr:where([title]) {
+    -webkit-text-decoration: underline dotted;
+    text-decoration: underline dotted;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  a {
+    color: inherit;
+    -webkit-text-decoration: inherit;
+    text-decoration: inherit;
+  }
+  b, strong {
+    font-weight: bolder;
+  }
+  code, kbd, samp, pre {
+    font-family: var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+    font-feature-settings: var(--default-mono-font-feature-settings, normal);
+    font-variation-settings: var(--default-mono-font-variation-settings, normal);
+    font-size: 1em;
+  }
+  small {
+    font-size: 80%;
+  }
+  sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  sub {
+    bottom: -0.25em;
+  }
+  sup {
+    top: -0.5em;
+  }
+  table {
+    text-indent: 0;
+    border-color: inherit;
+    border-collapse: collapse;
+  }
+  :-moz-focusring:where(:not(iframe)) {
+    outline: auto;
+  }
+  progress {
+    vertical-align: baseline;
+  }
+  summary {
+    display: list-item;
+  }
+  ol, ul, menu {
+    list-style: none;
+  }
+  img, svg, video, canvas, audio, iframe, embed, object {
+    display: block;
+    vertical-align: middle;
+  }
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+  button, input, select, optgroup, textarea, ::file-selector-button {
+    font: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    border-radius: 0;
+    background-color: transparent;
+    opacity: 1;
+  }
+  :where(select:is([multiple], [size])) optgroup {
+    font-weight: bolder;
+  }
+  :where(select:is([multiple], [size])) optgroup option {
+    padding-inline-start: 20px;
+  }
+  ::file-selector-button {
+    margin-inline-end: 4px;
+  }
+  ::placeholder {
+    opacity: 1;
+  }
+  @supports (not (-webkit-appearance: -apple-pay-button))  or (contain-intrinsic-size: 1px) {
+    ::placeholder {
+      color: currentcolor;
+      @supports (color: color-mix(in lab, red, red)) {
+        color: color-mix(in oklab, currentcolor 50%, transparent);
+      }
+    }
+  }
+  textarea {
+    resize: vertical;
+  }
+  ::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+  ::-webkit-date-and-time-value {
+    min-height: 1lh;
+    text-align: inherit;
+  }
+  ::-webkit-datetime-edit {
+    display: inline-flex;
+  }
+  ::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+  }
+  ::-webkit-datetime-edit, ::-webkit-datetime-edit-year-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-minute-field, ::-webkit-datetime-edit-second-field, ::-webkit-datetime-edit-millisecond-field, ::-webkit-datetime-edit-meridiem-field {
+    padding-block: 0;
+  }
+  ::-webkit-calendar-picker-indicator {
+    line-height: 1;
+  }
+  :-moz-ui-invalid {
+    box-shadow: none;
+  }
+  button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-selector-button {
+    appearance: button;
+  }
+  ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+    height: auto;
+  }
+  [hidden]:where(:not([hidden="until-found"])) {
+    display: none !important;
+  }
+}
+@layer utilities {
+  .collapse {
+    visibility: collapse;
+  }
+  .absolute {
+    position: absolute;
+  }
+  .relative {
+    position: relative;
+  }
+  .top-2 {
+    top: calc(var(--spacing) * 2);
+  }
+  .right-2 {
+    right: calc(var(--spacing) * 2);
+  }
+  .mx-auto {
+    margin-inline: auto;
+  }
+  .mt-1 {
+    margin-top: var(--spacing);
+  }
+  .mt-3 {
+    margin-top: calc(var(--spacing) * 3);
+  }
+  .mt-4 {
+    margin-top: calc(var(--spacing) * 4);
+  }
+  .mt-5 {
+    margin-top: calc(var(--spacing) * 5);
+  }
+  .mr-2 {
+    margin-right: calc(var(--spacing) * 2);
+  }
+  .mb-1 {
+    margin-bottom: var(--spacing);
+  }
+  .mb-2 {
+    margin-bottom: calc(var(--spacing) * 2);
+  }
+  .mb-3 {
+    margin-bottom: calc(var(--spacing) * 3);
+  }
+  .mb-4 {
+    margin-bottom: calc(var(--spacing) * 4);
+  }
+  .mb-5 {
+    margin-bottom: calc(var(--spacing) * 5);
+  }
+  .mb-6 {
+    margin-bottom: calc(var(--spacing) * 6);
+  }
+  .mb-8 {
+    margin-bottom: calc(var(--spacing) * 8);
+  }
+  .block {
+    display: block;
+  }
+  .flex {
+    display: flex;
+  }
+  .grid {
+    display: grid;
+  }
+  .hidden {
+    display: none;
+  }
+  .inline {
+    display: inline;
+  }
+  .inline-block {
+    display: inline-block;
+  }
+  .inline-flex {
+    display: inline-flex;
+  }
+  .list-item {
+    display: list-item;
+  }
+  .table {
+    display: table;
+  }
+  .aspect-square {
+    aspect-ratio: 1 / 1;
+  }
+  .h-1\.5 {
+    height: calc(var(--spacing) * 1.5);
+  }
+  .h-5 {
+    height: calc(var(--spacing) * 5);
+  }
+  .h-8 {
+    height: calc(var(--spacing) * 8);
+  }
+  .h-10 {
+    height: calc(var(--spacing) * 10);
+  }
+  .h-11 {
+    height: calc(var(--spacing) * 11);
+  }
+  .h-12 {
+    height: calc(var(--spacing) * 12);
+  }
+  .h-24 {
+    height: calc(var(--spacing) * 24);
+  }
+  .h-36 {
+    height: calc(var(--spacing) * 36);
+  }
+  .h-40 {
+    height: calc(var(--spacing) * 40);
+  }
+  .h-56 {
+    height: calc(var(--spacing) * 56);
+  }
+  .h-full {
+    height: 100%;
+  }
+  .min-h-screen {
+    min-height: 100vh;
+  }
+  .w-5 {
+    width: calc(var(--spacing) * 5);
+  }
+  .w-8 {
+    width: calc(var(--spacing) * 8);
+  }
+  .w-10 {
+    width: calc(var(--spacing) * 10);
+  }
+  .w-11 {
+    width: calc(var(--spacing) * 11);
+  }
+  .w-12 {
+    width: calc(var(--spacing) * 12);
+  }
+  .w-16 {
+    width: calc(var(--spacing) * 16);
+  }
+  .w-24 {
+    width: calc(var(--spacing) * 24);
+  }
+  .w-36 {
+    width: calc(var(--spacing) * 36);
+  }
+  .w-40 {
+    width: calc(var(--spacing) * 40);
+  }
+  .w-full {
+    width: 100%;
+  }
+  .max-w-3xl {
+    max-width: var(--container-3xl);
+  }
+  .max-w-\[60\%\] {
+    max-width: 60%;
+  }
+  .max-w-\[220px\] {
+    max-width: 220px;
+  }
+  .max-w-md {
+    max-width: var(--container-md);
+  }
+  .min-w-0 {
+    min-width: 0px;
+  }
+  .flex-1 {
+    flex: 1;
+  }
+  .shrink-0 {
+    flex-shrink: 0;
+  }
+  .transform {
+    transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
+  }
+  .cursor-pointer {
+    cursor: pointer;
+  }
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .flex-col {
+    flex-direction: column;
+  }
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+  .items-center {
+    align-items: center;
+  }
+  .justify-between {
+    justify-content: space-between;
+  }
+  .justify-center {
+    justify-content: center;
+  }
+  .gap-2 {
+    gap: calc(var(--spacing) * 2);
+  }
+  .gap-3 {
+    gap: calc(var(--spacing) * 3);
+  }
+  .gap-4 {
+    gap: calc(var(--spacing) * 4);
+  }
+  .gap-6 {
+    gap: calc(var(--spacing) * 6);
+  }
+  :where(.space-y-2 > :not(:last-child)) {
+    --tw-space-y-reverse: 0;
+    margin-block-start: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));
+    margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));
+  }
+  :where(.space-y-3 > :not(:last-child)) {
+    --tw-space-y-reverse: 0;
+    margin-block-start: calc(calc(var(--spacing) * 3) * var(--tw-space-y-reverse));
+    margin-block-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse)));
+  }
+  .overflow-hidden {
+    overflow: hidden;
+  }
+  .rounded-2xl {
+    border-radius: var(--radius-2xl);
+  }
+  .rounded-full {
+    border-radius: calc(infinity * 1px);
+  }
+  .rounded-lg {
+    border-radius: var(--radius-lg);
+  }
+  .rounded-xl {
+    border-radius: var(--radius-xl);
+  }
+  .border {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+  }
+  .border-t {
+    border-top-style: var(--tw-border-style);
+    border-top-width: 1px;
+  }
+  .border-b {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 1px;
+  }
+  .border-amber-500\/40 {
+    border-color: color-mix(in srgb, oklch(76.9% 0.188 70.08) 40%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-amber-500) 40%, transparent);
+    }
+  }
+  .border-emerald-400 {
+    border-color: var(--color-emerald-400);
+  }
+  .border-emerald-500\/30 {
+    border-color: color-mix(in srgb, oklch(69.6% 0.17 162.48) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-emerald-500) 30%, transparent);
+    }
+  }
+  .border-emerald-500\/40 {
+    border-color: color-mix(in srgb, oklch(69.6% 0.17 162.48) 40%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-emerald-500) 40%, transparent);
+    }
+  }
+  .border-indigo-400 {
+    border-color: var(--color-indigo-400);
+  }
+  .border-indigo-500\/20 {
+    border-color: color-mix(in srgb, oklch(58.5% 0.233 277.117) 20%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-indigo-500) 20%, transparent);
+    }
+  }
+  .border-indigo-500\/30 {
+    border-color: color-mix(in srgb, oklch(58.5% 0.233 277.117) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-indigo-500) 30%, transparent);
+    }
+  }
+  .border-purple-400 {
+    border-color: var(--color-purple-400);
+  }
+  .border-purple-500\/20 {
+    border-color: color-mix(in srgb, oklch(62.7% 0.265 303.9) 20%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-purple-500) 20%, transparent);
+    }
+  }
+  .border-rose-400 {
+    border-color: var(--color-rose-400);
+  }
+  .border-rose-500\/30 {
+    border-color: color-mix(in srgb, oklch(64.5% 0.246 16.439) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-rose-500) 30%, transparent);
+    }
+  }
+  .border-slate-600 {
+    border-color: var(--color-slate-600);
+  }
+  .border-slate-700 {
+    border-color: var(--color-slate-700);
+  }
+  .border-slate-800 {
+    border-color: var(--color-slate-800);
+  }
+  .bg-cardbg {
+    background-color: var(--color-cardbg);
+  }
+  .bg-darkbg {
+    background-color: var(--color-darkbg);
+  }
+  .bg-emerald-600\/30 {
+    background-color: color-mix(in srgb, oklch(59.6% 0.145 163.225) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-emerald-600) 30%, transparent);
+    }
+  }
+  .bg-emerald-900\/30 {
+    background-color: color-mix(in srgb, oklch(37.8% 0.077 168.94) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-emerald-900) 30%, transparent);
+    }
+  }
+  .bg-indigo-500 {
+    background-color: var(--color-indigo-500);
+  }
+  .bg-indigo-600 {
+    background-color: var(--color-indigo-600);
+  }
+  .bg-indigo-600\/30 {
+    background-color: color-mix(in srgb, oklch(51.1% 0.262 276.966) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-indigo-600) 30%, transparent);
+    }
+  }
+  .bg-purple-500 {
+    background-color: var(--color-purple-500);
+  }
+  .bg-purple-600 {
+    background-color: var(--color-purple-600);
+  }
+  .bg-purple-600\/30 {
+    background-color: color-mix(in srgb, oklch(55.8% 0.288 302.321) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-purple-600) 30%, transparent);
+    }
+  }
+  .bg-purple-900\/30 {
+    background-color: color-mix(in srgb, oklch(38.1% 0.176 304.987) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-purple-900) 30%, transparent);
+    }
+  }
+  .bg-rose-600\/30 {
+    background-color: color-mix(in srgb, oklch(58.6% 0.253 17.585) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-rose-600) 30%, transparent);
+    }
+  }
+  .bg-rose-900\/30 {
+    background-color: color-mix(in srgb, oklch(41% 0.159 10.272) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-rose-900) 30%, transparent);
+    }
+  }
+  .bg-slate-800 {
+    background-color: var(--color-slate-800);
+  }
+  .bg-slate-800\/60 {
+    background-color: color-mix(in srgb, oklch(27.9% 0.041 260.031) 60%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-slate-800) 60%, transparent);
+    }
+  }
+  .bg-slate-900\/50 {
+    background-color: color-mix(in srgb, oklch(20.8% 0.042 265.755) 50%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-slate-900) 50%, transparent);
+    }
+  }
+  .bg-gradient-to-br {
+    --tw-gradient-position: to bottom right in oklab;
+    background-image: linear-gradient(var(--tw-gradient-stops));
+  }
+  .bg-gradient-to-r {
+    --tw-gradient-position: to right in oklab;
+    background-image: linear-gradient(var(--tw-gradient-stops));
+  }
+  .bg-gradient-to-tr {
+    --tw-gradient-position: to top right in oklab;
+    background-image: linear-gradient(var(--tw-gradient-stops));
+  }
+  .from-indigo-400 {
+    --tw-gradient-from: var(--color-indigo-400);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .from-indigo-500 {
+    --tw-gradient-from: var(--color-indigo-500);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .from-indigo-900\/40 {
+    --tw-gradient-from: color-mix(in srgb, oklch(35.9% 0.144 278.697) 40%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-gradient-from: color-mix(in oklab, var(--color-indigo-900) 40%, transparent);
+    }
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .from-indigo-950 {
+    --tw-gradient-from: var(--color-indigo-950);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .to-purple-400 {
+    --tw-gradient-to: var(--color-purple-400);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .to-purple-600 {
+    --tw-gradient-to: var(--color-purple-600);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .to-purple-900\/40 {
+    --tw-gradient-to: color-mix(in srgb, oklch(38.1% 0.176 304.987) 40%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-gradient-to: color-mix(in oklab, var(--color-purple-900) 40%, transparent);
+    }
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .to-slate-900 {
+    --tw-gradient-to: var(--color-slate-900);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .bg-clip-text {
+    background-clip: text;
+  }
+  .p-2 {
+    padding: calc(var(--spacing) * 2);
+  }
+  .p-3 {
+    padding: calc(var(--spacing) * 3);
+  }
+  .p-4 {
+    padding: calc(var(--spacing) * 4);
+  }
+  .p-5 {
+    padding: calc(var(--spacing) * 5);
+  }
+  .p-6 {
+    padding: calc(var(--spacing) * 6);
+  }
+  .px-2 {
+    padding-inline: calc(var(--spacing) * 2);
+  }
+  .px-3 {
+    padding-inline: calc(var(--spacing) * 3);
+  }
+  .px-4 {
+    padding-inline: calc(var(--spacing) * 4);
+  }
+  .px-5 {
+    padding-inline: calc(var(--spacing) * 5);
+  }
+  .px-6 {
+    padding-inline: calc(var(--spacing) * 6);
+  }
+  .py-1 {
+    padding-block: var(--spacing);
+  }
+  .py-2 {
+    padding-block: calc(var(--spacing) * 2);
+  }
+  .py-3 {
+    padding-block: calc(var(--spacing) * 3);
+  }
+  .py-4 {
+    padding-block: calc(var(--spacing) * 4);
+  }
+  .py-6 {
+    padding-block: calc(var(--spacing) * 6);
+  }
+  .pr-6 {
+    padding-right: calc(var(--spacing) * 6);
+  }
+  .text-center {
+    text-align: center;
+  }
+  .text-left {
+    text-align: left;
+  }
+  .text-start {
+    text-align: start;
+  }
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+  .text-2xl {
+    font-size: var(--text-2xl);
+    line-height: var(--tw-leading, var(--text-2xl--line-height));
+  }
+  .text-3xl {
+    font-size: var(--text-3xl);
+    line-height: var(--tw-leading, var(--text-3xl--line-height));
+  }
+  .text-4xl {
+    font-size: var(--text-4xl);
+    line-height: var(--tw-leading, var(--text-4xl--line-height));
+  }
+  .text-lg {
+    font-size: var(--text-lg);
+    line-height: var(--tw-leading, var(--text-lg--line-height));
+  }
+  .text-sm {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+  }
+  .text-xl {
+    font-size: var(--text-xl);
+    line-height: var(--tw-leading, var(--text-xl--line-height));
+  }
+  .text-xs {
+    font-size: var(--text-xs);
+    line-height: var(--tw-leading, var(--text-xs--line-height));
+  }
+  .font-bold {
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
+  }
+  .font-light {
+    --tw-font-weight: var(--font-weight-light);
+    font-weight: var(--font-weight-light);
+  }
+  .font-semibold {
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+  }
+  .tracking-widest {
+    --tw-tracking: var(--tracking-widest);
+    letter-spacing: var(--tracking-widest);
+  }
+  .break-words {
+    overflow-wrap: break-word;
+  }
+  .whitespace-nowrap {
+    white-space: nowrap;
+  }
+  .text-amber-300 {
+    color: var(--color-amber-300);
+  }
+  .text-emerald-300 {
+    color: var(--color-emerald-300);
+  }
+  .text-indigo-200 {
+    color: var(--color-indigo-200);
+  }
+  .text-indigo-300 {
+    color: var(--color-indigo-300);
+  }
+  .text-purple-300 {
+    color: var(--color-purple-300);
+  }
+  .text-rose-300 {
+    color: var(--color-rose-300);
+  }
+  .text-slate-100 {
+    color: var(--color-slate-100);
+  }
+  .text-slate-200 {
+    color: var(--color-slate-200);
+  }
+  .text-slate-300 {
+    color: var(--color-slate-300);
+  }
+  .text-slate-400 {
+    color: var(--color-slate-400);
+  }
+  .text-slate-500 {
+    color: var(--color-slate-500);
+  }
+  .text-transparent {
+    color: transparent;
+  }
+  .text-white {
+    color: var(--color-white);
+  }
+  .uppercase {
+    text-transform: uppercase;
+  }
+  .italic {
+    font-style: italic;
+  }
+  .tabular-nums {
+    --tw-numeric-spacing: tabular-nums;
+    font-variant-numeric: var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,);
+  }
+  .underline {
+    text-decoration-line: underline;
+  }
+  .underline-offset-4 {
+    text-underline-offset: 4px;
+  }
+  .accent-indigo-500 {
+    accent-color: var(--color-indigo-500);
+  }
+  .opacity-40 {
+    opacity: 40%;
+  }
+  .shadow-2xl {
+    --tw-shadow: 0 25px 50px -12px var(--tw-shadow-color, rgb(0 0 0 / 0.25));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-lg {
+    --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-xl {
+    --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 8px 10px -6px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .ring {
+    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-indigo-500\/30 {
+    --tw-shadow-color: color-mix(in srgb, oklch(58.5% 0.233 277.117) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-indigo-500) 30%, transparent) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .shadow-indigo-500\/40 {
+    --tw-shadow-color: color-mix(in srgb, oklch(58.5% 0.233 277.117) 40%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-indigo-500) 40%, transparent) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .shadow-indigo-500\/50 {
+    --tw-shadow-color: color-mix(in srgb, oklch(58.5% 0.233 277.117) 50%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-indigo-500) 50%, transparent) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .shadow-indigo-600\/40 {
+    --tw-shadow-color: color-mix(in srgb, oklch(51.1% 0.262 276.966) 40%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-indigo-600) 40%, transparent) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .blur {
+    --tw-blur: blur(8px);
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
+  .filter {
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
+  .backdrop-blur-md {
+    --tw-backdrop-blur: blur(var(--blur-md));
+    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+  }
+  .backdrop-filter {
+    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+  }
+  .transition {
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .ease-in-out {
+    --tw-ease: var(--ease-in-out);
+    transition-timing-function: var(--ease-in-out);
+  }
+  .ease-out {
+    --tw-ease: var(--ease-out);
+    transition-timing-function: var(--ease-out);
+  }
+  .placeholder\:text-slate-500::placeholder {
+    color: var(--color-slate-500);
+  }
+  @media (hover: hover) {
+    .hover\:border-slate-600:hover {
+      border-color: var(--color-slate-600);
+    }
+    .hover\:bg-indigo-500:hover {
+      background-color: var(--color-indigo-500);
+    }
+    .hover\:bg-indigo-600\/30:hover {
+      background-color: color-mix(in srgb, oklch(51.1% 0.262 276.966) 30%, transparent);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-indigo-600\/30:hover {
+        background-color: color-mix(in oklab, var(--color-indigo-600) 30%, transparent);
+      }
+    }
+    .hover\:bg-purple-500:hover {
+      background-color: var(--color-purple-500);
+    }
+    .hover\:bg-slate-700:hover {
+      background-color: var(--color-slate-700);
+    }
+    .hover\:bg-slate-800:hover {
+      background-color: var(--color-slate-800);
+    }
+    .hover\:text-rose-300:hover {
+      color: var(--color-rose-300);
+    }
+    .hover\:text-white:hover {
+      color: var(--color-white);
+    }
+  }
+  .disabled\:opacity-30:disabled {
+    opacity: 30%;
+  }
+  @media (width >= 40rem) {
+    .sm\:col-span-2 {
+      grid-column: span 2 / span 2;
+    }
+    .sm\:inline {
+      display: inline;
+    }
+    .sm\:w-28 {
+      width: calc(var(--spacing) * 28);
+    }
+    .sm\:grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .sm\:grid-cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .sm\:grid-cols-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .sm\:flex-row {
+      flex-direction: row;
+    }
+    .sm\:gap-3 {
+      gap: calc(var(--spacing) * 3);
+    }
+    .sm\:p-8 {
+      padding: calc(var(--spacing) * 8);
+    }
+    .sm\:text-left {
+      text-align: left;
+    }
+    .sm\:text-2xl {
+      font-size: var(--text-2xl);
+      line-height: var(--tw-leading, var(--text-2xl--line-height));
+    }
+    .sm\:text-3xl {
+      font-size: var(--text-3xl);
+      line-height: var(--tw-leading, var(--text-3xl--line-height));
+    }
+    .sm\:text-sm {
+      font-size: var(--text-sm);
+      line-height: var(--tw-leading, var(--text-sm--line-height));
+    }
+  }
+}
+@property --tw-rotate-x {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-rotate-y {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-rotate-z {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-skew-x {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-skew-y {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-space-y-reverse {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@property --tw-gradient-position {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-gradient-from {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
+@property --tw-gradient-via {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
+@property --tw-gradient-to {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
+@property --tw-gradient-stops {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-gradient-via-stops {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-gradient-from-position {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+@property --tw-gradient-via-position {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 50%;
+}
+@property --tw-gradient-to-position {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-tracking {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ordinal {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-slashed-zero {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-numeric-figure {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-numeric-spacing {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-numeric-fraction {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-inset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-ring-inset {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-offset-width {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+@property --tw-ring-offset-color {
+  syntax: "*";
+  inherits: false;
+  initial-value: #fff;
+}
+@property --tw-ring-offset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-blur {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-brightness {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-contrast {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-grayscale {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-hue-rotate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-invert {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-opacity {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-saturate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-sepia {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-drop-shadow {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-drop-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-drop-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-drop-shadow-size {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-blur {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-brightness {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-contrast {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-grayscale {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-hue-rotate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-invert {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-opacity {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-saturate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-sepia {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ease {
+  syntax: "*";
+  inherits: false;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-rotate-x: initial;
+      --tw-rotate-y: initial;
+      --tw-rotate-z: initial;
+      --tw-skew-x: initial;
+      --tw-skew-y: initial;
+      --tw-space-y-reverse: 0;
+      --tw-border-style: solid;
+      --tw-gradient-position: initial;
+      --tw-gradient-from: #0000;
+      --tw-gradient-via: #0000;
+      --tw-gradient-to: #0000;
+      --tw-gradient-stops: initial;
+      --tw-gradient-via-stops: initial;
+      --tw-gradient-from-position: 0%;
+      --tw-gradient-via-position: 50%;
+      --tw-gradient-to-position: 100%;
+      --tw-font-weight: initial;
+      --tw-tracking: initial;
+      --tw-ordinal: initial;
+      --tw-slashed-zero: initial;
+      --tw-numeric-figure: initial;
+      --tw-numeric-spacing: initial;
+      --tw-numeric-fraction: initial;
+      --tw-shadow: 0 0 #0000;
+      --tw-shadow-color: initial;
+      --tw-shadow-alpha: 100%;
+      --tw-inset-shadow: 0 0 #0000;
+      --tw-inset-shadow-color: initial;
+      --tw-inset-shadow-alpha: 100%;
+      --tw-ring-color: initial;
+      --tw-ring-shadow: 0 0 #0000;
+      --tw-inset-ring-color: initial;
+      --tw-inset-ring-shadow: 0 0 #0000;
+      --tw-ring-inset: initial;
+      --tw-ring-offset-width: 0px;
+      --tw-ring-offset-color: #fff;
+      --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-blur: initial;
+      --tw-brightness: initial;
+      --tw-contrast: initial;
+      --tw-grayscale: initial;
+      --tw-hue-rotate: initial;
+      --tw-invert: initial;
+      --tw-opacity: initial;
+      --tw-saturate: initial;
+      --tw-sepia: initial;
+      --tw-drop-shadow: initial;
+      --tw-drop-shadow-color: initial;
+      --tw-drop-shadow-alpha: 100%;
+      --tw-drop-shadow-size: initial;
+      --tw-backdrop-blur: initial;
+      --tw-backdrop-brightness: initial;
+      --tw-backdrop-contrast: initial;
+      --tw-backdrop-grayscale: initial;
+      --tw-backdrop-hue-rotate: initial;
+      --tw-backdrop-invert: initial;
+      --tw-backdrop-opacity: initial;
+      --tw-backdrop-saturate: initial;
+      --tw-backdrop-sepia: initial;
+      --tw-ease: initial;
+    }
+  }
+}
+
+    </style>
+    <style>
+        [hidden] { display: none !important; }
+        :root { color-scheme: dark; }
+        html, body { background: #080c14; color: #f1f5f9; }
+        #breathCircle { transition-property: transform; transition-timing-function: ease-in-out; transform: scale(0.85); }
+        .card-img { display: flex; align-items: center; justify-content: center; }
+        .card-img svg { width: 100%; height: 100%; }
+        .emoji { line-height: 1; font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; }
+        .card-img .emoji { font-size: 6.5rem; }
+        #qImg .emoji { font-size: 4.5rem; }
+        .mini .emoji { font-size: 2rem; }
+        .opt-btn:disabled { cursor: default; }
+        .hl-ico { width: 1em; height: 1em; display: inline-block; vertical-align: -0.125em; flex-shrink: 0; }
+        .ring-track { stroke: #1e293b; }
+        @media (prefers-reduced-motion: reduce) { #breathCircle { transition-duration: 0s !important; } }
+    </style>
+</head>
+<body class="bg-darkbg text-slate-100 min-h-screen font-sans flex flex-col">
+    <!-- En-tête -->
+    <header class="px-4 py-4 border-b border-slate-800 flex justify-between items-center gap-3 bg-slate-900/50 backdrop-blur-md">
+        <button id="btnLogo" class="flex items-center gap-3" data-i18n-aria="home" aria-label="Retour à l'accueil">
+            <span class="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+                <i class="fa-solid fa-brain text-white text-lg"></i>
+            </span>
+            <span class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">HypnoLingo</span>
+        </button>
+        <div class="flex items-center gap-2 sm:gap-3">
+            <span id="netPill" class="text-xs rounded-full px-2 py-1 border border-emerald-500/40 text-emerald-300 whitespace-nowrap">En ligne</span>
+            <input type="range" id="soundVol" min="0" max="1" step="0.05" value="0.5" class="accent-indigo-500 w-16 sm:w-28" data-i18n-aria="vol" aria-label="Volume du fond sonore">
+            <button id="btnSound" class="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-full px-3 py-2 text-sm transition" data-i18n-aria="snd" aria-label="Fond sonore">
+                <i class="fa-solid fa-headphones"></i> <span id="soundLabel" class="hidden sm:inline whitespace-nowrap">Son coupé</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto w-full flex-1 px-4 py-6">
+        <!-- Étapes -->
+        <ol id="steps" class="grid grid-cols-3 gap-2 mb-6 text-xs sm:text-sm" hidden>
+            <li data-step="1" class="step rounded-full border border-slate-700 px-3 py-2 text-center text-slate-400" data-i18n="s1">1 · Se poser</li>
+            <li data-step="2" class="step rounded-full border border-slate-700 px-3 py-2 text-center text-slate-400" data-i18n="s2">2 · Apprendre</li>
+            <li data-step="3" class="step rounded-full border border-slate-700 px-3 py-2 text-center text-slate-400" data-i18n="s3">3 · Se tester</li>
+        </ol>
+
+        <!-- Accueil -->
+        <section id="scrHome">
+            <!-- Séance choisie -->
+            <div class="mb-8 p-6 rounded-2xl bg-gradient-to-r from-indigo-900/40 to-purple-900/40 border border-indigo-500/20 shadow-xl">
+                <p class="text-xs uppercase tracking-widest text-indigo-300 mb-2" data-i18n="your">Ta séance</p>
+                <h1 class="text-2xl sm:text-3xl font-bold mb-1 flex items-center gap-3"><span id="selIcon" class="emoji text-3xl"></span><span id="selTitle"></span></h1>
+                <p id="selSub" class="text-slate-300 mb-5"></p>
+                <div class="flex flex-wrap gap-3 items-center">
+                    <button id="btnStart" class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-6 py-3 rounded-full shadow-lg shadow-indigo-600/40 transition flex items-center gap-2">
+                        <i class="fa-solid fa-play"></i> <span data-i18n="start">Commencer la séance</span>
+                    </button>
+                    <button id="btnSkipToCards" class="text-sm text-slate-300 underline underline-offset-4 hover:text-white" data-i18n="skip">Aller directement aux cartes</button>
+                </div>
+                <p id="reviewNote" class="text-sm text-amber-300 mt-4" hidden></p>
+            </div>
+
+            <!-- Langue -->
+            <h2 class="text-sm uppercase tracking-widest text-slate-400 mb-3" data-i18n="hLang">1. Langue à apprendre</h2>
+            <div id="langGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8"></div>
+
+            <!-- Thèmes -->
+            <h2 class="text-sm uppercase tracking-widest text-slate-400 mb-1" data-i18n="hTheme">2. Thème</h2>
+            <p class="text-sm text-slate-500 mb-3" data-i18n="themeNote">Bibliothèque intégrée : marche sans connexion.</p>
+            <div id="themeGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8"></div>
+
+            <!-- Mes sujets -->
+            <div id="myWrap" hidden>
+                <h2 class="text-sm uppercase tracking-widest text-slate-400 mb-1" data-i18n="hMine">Mes sujets sur mesure</h2>
+                <p class="text-sm text-slate-500 mb-3" data-i18n="mineNote">Créés avec l'IA et gardés sur cet appareil : disponibles hors ligne.</p>
+                <div id="myGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8"></div>
+            </div>
+
+            <!-- Sujet libre -->
+            <div class="bg-cardbg border border-slate-800 rounded-2xl p-5 mb-8">
+                <h2 class="text-lg font-semibold mb-1 flex items-center gap-2"><i class="fa-solid fa-wand-magic-sparkles text-purple-300"></i> <span data-i18n="aiT">Créer un sujet sur mesure avec l'IA</span></h2>
+                <p class="text-sm text-slate-400 mb-4" data-i18n="aiD">Tape n'importe quel sujet : « vocabulaire du golf », « immobilier en Espagne », « cuisine thaïlandaise »… L'IA prépare 10 mots dans la langue choisie. Il faut une connexion pour créer le sujet, plus pour le réviser.</p>
+                <form id="aiForm" class="flex flex-col sm:flex-row gap-3">
+                    <input id="aiTopic" type="text" maxlength="80" required data-i18n-ph="aiPh" placeholder="Ex. : vocabulaire du golf" class="flex-1 min-w-0 bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 placeholder:text-slate-500">
+                    <button id="aiBtn" type="submit" class="px-5 py-3 rounded-xl bg-purple-600 hover:bg-purple-500 font-semibold whitespace-nowrap"><i class="fa-solid fa-wand-magic-sparkles"></i> <span data-i18n="aiB">Créer le sujet</span></button>
+                </form>
+                <p id="aiMsg" class="text-sm mt-3" hidden></p>
+                <details id="aiSettings" class="mt-4 text-sm">
+                    <summary class="cursor-pointer text-slate-400 hover:text-white" data-i18n="aiSet">Réglages de l'IA (clé d'API)</summary>
+                    <div class="mt-3 space-y-2">
+                        <p class="text-slate-400" data-i18n="aiKey">Dans l'appli installée, l'IA passe par une clé d'API Anthropic (console.anthropic.com). Elle reste enregistrée sur cet appareil uniquement.</p>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <input id="apiKey" type="password" autocomplete="off" placeholder="sk-ant-..." class="flex-1 min-w-0 bg-slate-800 border border-slate-700 rounded-lg px-3 py-2">
+                            <button id="apiSave" type="button" class="px-4 py-2 rounded-lg border border-slate-600 hover:bg-slate-800" data-i18n="save">Enregistrer</button>
+                        </div>
+                        <p id="apiState" class="text-slate-500"></p>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Réglages séance -->
+            <div class="grid sm:grid-cols-2 gap-4">
+                <label class="sm:col-span-2 bg-cardbg border border-indigo-500/30 rounded-xl p-4 flex items-center justify-between gap-3 text-sm">
+                    <span><i class="fa-solid fa-globe text-indigo-300 mr-2"></i><span data-i18n="uiLang">Langue de l'appli</span></span>
+                    <select id="uiLang" class="bg-slate-800 border border-slate-700 rounded-lg p-2 max-w-[60%]"></select>
+                </label>
+                <label class="bg-cardbg border border-slate-800 rounded-xl p-4 flex items-center justify-between gap-3 text-sm">
+                    <span><i class="fa-solid fa-hourglass-half text-indigo-300 mr-2"></i><span data-i18n="bLen">Durée de la respiration</span></span>
+                    <select id="breathLen" class="bg-slate-800 border border-slate-700 rounded-lg p-2">
+                        <option value="1">1 min</option>
+                        <option value="3" selected>3 min</option>
+                        <option value="5">5 min</option>
+                    </select>
+                </label>
+                <label class="bg-cardbg border border-slate-800 rounded-xl p-4 flex items-center justify-between gap-3 text-sm cursor-pointer">
+                    <span><i class="fa-solid fa-comment-dots text-indigo-300 mr-2"></i><span data-i18n="vGuide">Voix qui guide la respiration</span></span>
+                    <input type="checkbox" id="voiceGuide" checked class="w-5 h-5 accent-indigo-500">
+                </label>
+            </div>
+        </section>
+
+        <!-- Étape 1 : respiration -->
+        <section id="scrBreath" hidden>
+            <div class="bg-cardbg border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl text-center overflow-hidden">
+                <h2 class="text-xl sm:text-2xl font-bold mb-2" data-i18n="bT">Se poser</h2>
+                <p class="text-slate-400 mb-8 max-w-md mx-auto" data-i18n="bD">Mets ton casque. Inspire quand le cercle grandit, expire quand il se réduit.</p>
+                <div class="h-56 flex items-center justify-center mb-6">
+                    <div id="breathCircle" class="w-40 h-40 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center shadow-2xl shadow-indigo-500/50">
+                        <span id="breathLabel" class="text-xl font-semibold text-white">Inspire</span>
+                    </div>
+                </div>
+                <p class="text-3xl font-light tabular-nums mb-6" id="breathTime">3:00</p>
+                <button id="btnEndBreath" class="text-sm text-slate-300 underline underline-offset-4 hover:text-white" data-i18n="bSkip">Passer à l'apprentissage</button>
+            </div>
+        </section>
+
+        <!-- Étape 2 : cartes -->
+        <section id="scrCards" hidden>
+            <div class="flex items-center justify-between mb-3 text-sm text-slate-400">
+                <span id="cardCount">1 / 10</span>
+                <span id="cardReview" class="text-amber-300" hidden><i class="fa-solid fa-rotate"></i> <span data-i18n="review">À revoir</span></span>
+            </div>
+            <div class="h-1.5 rounded-full bg-slate-800 mb-4 overflow-hidden"><div id="cardProgress" class="h-full bg-indigo-500 transition-all" style="width:10%"></div></div>
+            <div class="bg-cardbg border border-slate-800 rounded-2xl p-6 shadow-2xl">
+                <div class="grid sm:grid-cols-2 gap-6 items-center">
+                    <div class="card-img w-full max-w-[220px] aspect-square mx-auto rounded-2xl bg-gradient-to-br from-indigo-950 to-slate-900 border border-indigo-500/20 p-4" id="cardImg"></div>
+                    <div class="min-w-0">
+                        <div class="flex items-center gap-3 mb-1 flex-wrap">
+                            <h2 id="cardWord" class="text-4xl font-bold break-words min-w-0"></h2>
+                            <button id="btnListen" class="w-11 h-11 shrink-0 rounded-full bg-indigo-600 hover:bg-indigo-500 flex items-center justify-center shadow-lg shadow-indigo-600/40" data-i18n-aria="listen" aria-label="Écouter la prononciation">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
+                        </div>
+                        <p id="cardRoman" class="text-indigo-300 text-lg mb-1"></p>
+                        <p id="cardPhBox" class="text-slate-400 mb-1"><span data-i18n="pron">se prononce</span> « <span id="cardPh"></span> »</p>
+                        <p id="cardFr" class="text-xl text-indigo-200 mb-4"></p>
+                        <div id="cardTipBox" class="rounded-xl bg-purple-900/30 border border-purple-500/20 p-3 mb-3">
+                            <p class="text-xs uppercase tracking-widest text-purple-300 mb-1" data-i18n="tip">Astuce pour retenir</p>
+                            <p id="cardTip" class="text-slate-200"></p>
+                        </div>
+                        <p id="cardExBox" class="text-sm text-slate-300"><span id="cardEx" class="italic"></span><br><span id="cardExFr" class="text-slate-500"></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-between gap-3 mt-5">
+                <button id="btnPrev" class="px-5 py-3 rounded-full border border-slate-700 hover:bg-slate-800 disabled:opacity-30 transition"><i class="fa-solid fa-arrow-left"></i> <span data-i18n="prev">Précédent</span></button>
+                <button id="btnNext" class="px-5 py-3 rounded-full bg-indigo-600 hover:bg-indigo-500 font-semibold transition">Suivant <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </section>
+
+        <!-- Étape 3 : quiz -->
+        <section id="scrQuiz" hidden>
+            <div class="flex items-center justify-between mb-3 text-sm text-slate-400">
+                <span id="qCount">Question 1 / 10</span>
+                <span id="qScore" class="tabular-nums"></span>
+            </div>
+            <div class="h-1.5 rounded-full bg-slate-800 mb-4 overflow-hidden"><div id="qProgress" class="h-full bg-purple-500 transition-all" style="width:10%"></div></div>
+            <div class="bg-cardbg border border-slate-800 rounded-2xl p-6 shadow-2xl text-center">
+                <p id="qPrompt" class="text-lg mb-4"></p>
+                <div id="qImg" class="card-img w-40 h-40 mx-auto mb-5 rounded-2xl bg-gradient-to-br from-indigo-950 to-slate-900 border border-indigo-500/20 p-3"></div>
+                <button id="qListen" class="w-24 h-24 mx-auto mb-5 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center text-3xl shadow-2xl shadow-indigo-500/40" data-i18n-aria="relisten" aria-label="Réécouter le mot">
+                    <i class="fa-solid fa-volume-high"></i>
+                </button>
+                <div id="qOpts" class="grid grid-cols-2 gap-3"></div>
+                <div id="qFeedback" class="mt-5 rounded-xl p-4 text-left" hidden></div>
+                <div id="qConf" class="mt-4" hidden>
+                    <p class="text-sm text-slate-400 mb-2" data-i18n="sure">Tu étais sûr de ta réponse ?</p>
+                    <div class="flex justify-center gap-3">
+                        <button data-sure="1" class="conf-btn px-5 py-2 rounded-full bg-indigo-600 hover:bg-indigo-500 font-semibold" data-i18n="yes">Oui, sûr</button>
+                        <button data-sure="0" class="conf-btn px-5 py-2 rounded-full border border-slate-600 hover:bg-slate-800" data-i18n="no">Pas vraiment</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Résultats -->
+        <section id="scrResults" hidden>
+            <div class="bg-cardbg border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl">
+                <div class="flex flex-col sm:flex-row items-center gap-6 mb-6">
+                    <svg viewBox="0 0 120 120" class="w-36 h-36 shrink-0" aria-hidden="true">
+                        <circle cx="60" cy="60" r="50" fill="none" class="ring-track" stroke-width="12"/>
+                        <circle id="ring" cx="60" cy="60" r="50" fill="none" stroke="#818cf8" stroke-width="12" stroke-linecap="round" transform="rotate(-90 60 60)" stroke-dasharray="314.16" stroke-dashoffset="314.16"/>
+                        <text id="ringText" x="60" y="68" text-anchor="middle" fill="#f1f5f9" font-size="26" font-weight="700">0 %</text>
+                    </svg>
+                    <div class="text-center sm:text-left">
+                        <h2 id="resTitle" class="text-2xl font-bold mb-2"></h2>
+                        <p id="resScore" class="text-slate-300"></p>
+                        <p id="resConf" class="text-slate-300"></p>
+                        <p id="resCalib" class="text-slate-400 text-sm mt-1"></p>
+                    </div>
+                </div>
+                <div id="resMissedWrap">
+                    <h3 class="text-sm uppercase tracking-widest text-slate-400 mb-3" data-i18n="rMiss">Mots à revoir</h3>
+                    <ul id="resMissed" class="space-y-3 mb-6"></ul>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <button id="btnReview" class="px-5 py-3 rounded-full bg-indigo-600 hover:bg-indigo-500 font-semibold"><i class="fa-solid fa-rotate"></i> <span data-i18n="rRev">Revoir les mots ratés</span></button>
+                    <button id="btnHome" class="px-5 py-3 rounded-full border border-slate-700 hover:bg-slate-800"><i class="fa-solid fa-house"></i> <span data-i18n="rHome">Retour à l'accueil</span></button>
+                </div>
+                <p class="text-sm text-slate-500 mt-5" data-i18n="rTom">Refais le quiz demain : se tester quelques jours de suite est ce qui ancre le mieux les mots.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="p-4 text-center text-xs text-slate-500 border-t border-slate-800">
+        HypnoLingo &copy; 2026 - <span data-i18n="foot">Relaxation guidée et mémorisation par associations. À écouter au casque, jamais en conduisant.</span>
+    </footer>
+
+    <script src="i18n.js"></script>
+    <script src="library.js"></script>
+    <script>
+
+    // Icônes intégrées (aucun fichier de police à télécharger)
+    const ICONS = {"fa-arrow-left":["0 0 512 512",["M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288 480 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-370.7 0 105.4-105.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"]],"fa-arrow-right":["0 0 512 512",["M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-105.4 105.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"]],"fa-brain":["0 0 512 512",["M120 56c0-30.9 25.1-56 56-56l24 0c17.7 0 32 14.3 32 32l0 448c0 17.7-14.3 32-32 32l-32 0c-29.8 0-54.9-20.4-62-48-.7 0-1.3 0-2 0-44.2 0-80-35.8-80-80 0-18 6-34.6 16-48-19.4-14.6-32-37.8-32-64 0-30.9 17.6-57.8 43.2-71.1-7.1-12-11.2-26-11.2-40.9 0-44.2 35.8-80 80-80l0-24zm272 0l0 24c44.2 0 80 35.8 80 80 0 15-4.1 29-11.2 40.9 25.7 13.3 43.2 40.1 43.2 71.1 0 26.2-12.6 49.4-32 64 10 13.4 16 30 16 48 0 44.2-35.8 80-80 80-.7 0-1.3 0-2 0-7.1 27.6-32.2 48-62 48l-32 0c-17.7 0-32-14.3-32-32l0-448c0-17.7 14.3-32 32-32l24 0c30.9 0 56 25.1 56 56z"]],"fa-check":["0 0 448 512",["M434.8 70.1c14.3 10.4 17.5 30.4 7.1 44.7l-256 352c-5.5 7.6-14 12.3-23.4 13.1s-18.5-2.7-25.1-9.3l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l101.5 101.5 234-321.7c10.4-14.3 30.4-17.5 44.7-7.1z"]],"fa-comment-dots":["0 0 512 512",["M256 480c141.4 0 256-107.5 256-240S397.4 0 256 0 0 107.5 0 240c0 54.3 19.2 104.3 51.6 144.5L2.8 476.8c-4.8 9-3.3 20 3.6 27.5s17.8 9.8 27.1 5.8l118.4-50.7C183.7 472.6 218.9 480 256 480zM128 208a32 32 0 1 1 0 64 32 32 0 1 1 0-64zm128 0a32 32 0 1 1 0 64 32 32 0 1 1 0-64zm96 32a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"]],"fa-headphones":["0 0 448 512",["M64 224c0-88.4 71.6-160 160-160s160 71.6 160 160l0 37.5c-10-3.5-20.8-5.5-32-5.5l-16 0c-26.5 0-48 21.5-48 48l0 128c0 26.5 21.5 48 48 48l16 0c53 0 96-43 96-96l0-160C448 100.3 347.7 0 224 0S0 100.3 0 224L0 384c0 53 43 96 96 96l16 0c26.5 0 48-21.5 48-48l0-128c0-26.5-21.5-48-48-48l-16 0c-11.2 0-22 1.9-32 5.5L64 224z"]],"fa-hourglass-half":["0 0 384 512",["M32 0C14.3 0 0 14.3 0 32S14.3 64 32 64l0 11c0 42.4 16.9 83.1 46.9 113.1l67.9 67.9-67.9 67.9C48.9 353.9 32 394.6 32 437l0 11c-17.7 0-32 14.3-32 32s14.3 32 32 32l320 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l0-11c0-42.4-16.9-83.1-46.9-113.1l-67.9-67.9 67.9-67.9c30-30 46.9-70.7 46.9-113.1l0-11c17.7 0 32-14.3 32-32S369.7 0 352 0L32 0zM96 75l0-11 192 0 0 11c0 19-5.6 37.4-16 53L112 128c-10.3-15.6-16-34-16-53zm16 309c3.5-5.3 7.6-10.3 12.1-14.9l67.9-67.9 67.9 67.9c4.6 4.6 8.6 9.6 12.2 14.9L112 384z"]],"fa-house":["0 0 512 512",["M277.8 8.6c-12.3-11.4-31.3-11.4-43.5 0l-224 208c-9.6 9-12.8 22.9-8 35.1S18.8 272 32 272l16 0 0 176c0 35.3 28.7 64 64 64l288 0c35.3 0 64-28.7 64-64l0-176 16 0c13.2 0 25-8.1 29.8-20.3s1.6-26.2-8-35.1l-224-208zM240 320l32 0c26.5 0 48 21.5 48 48l0 96-128 0 0-96c0-26.5 21.5-48 48-48z"]],"fa-play":["0 0 448 512",["M91.2 36.9c-12.4-6.8-27.4-6.5-39.6 .7S32 57.9 32 72l0 368c0 14.1 7.5 27.2 19.6 34.4s27.2 7.5 39.6 .7l336-184c12.8-7 20.8-20.5 20.8-35.1s-8-28.1-20.8-35.1l-336-184z"]],"fa-rotate":["0 0 512 512",["M480.1 192l7.9 0c13.3 0 24-10.7 24-24l0-144c0-9.7-5.8-18.5-14.8-22.2S477.9 .2 471 7L419.3 58.8C375 22.1 318 0 256 0 127 0 20.3 95.4 2.6 219.5 .1 237 12.2 253.2 29.7 255.7s33.7-9.7 36.2-27.1C79.2 135.5 159.3 64 256 64 300.4 64 341.2 79 373.7 104.3L327 151c-6.9 6.9-8.9 17.2-5.2 26.2S334.3 192 344 192l136.1 0zm29.4 100.5c2.5-17.5-9.7-33.7-27.1-36.2s-33.7 9.7-36.2 27.1c-13.3 93-93.4 164.5-190.1 164.5-44.4 0-85.2-15-117.7-40.3L185 361c6.9-6.9 8.9-17.2 5.2-26.2S177.7 320 168 320L24 320c-13.3 0-24 10.7-24 24L0 488c0 9.7 5.8 18.5 14.8 22.2S34.1 511.8 41 505l51.8-51.8C137 489.9 194 512 256 512 385 512 491.7 416.6 509.4 292.5z"]],"fa-trash-can":["0 0 448 512",["M136.7 5.9C141.1-7.2 153.3-16 167.1-16l113.9 0c13.8 0 26 8.8 30.4 21.9L320 32 416 32c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 96C14.3 96 0 81.7 0 64S14.3 32 32 32l96 0 8.7-26.1zM32 144l384 0 0 304c0 35.3-28.7 64-64 64L96 512c-35.3 0-64-28.7-64-64l0-304zm88 64c-13.3 0-24 10.7-24 24l0 192c0 13.3 10.7 24 24 24s24-10.7 24-24l0-192c0-13.3-10.7-24-24-24zm104 0c-13.3 0-24 10.7-24 24l0 192c0 13.3 10.7 24 24 24s24-10.7 24-24l0-192c0-13.3-10.7-24-24-24zm104 0c-13.3 0-24 10.7-24 24l0 192c0 13.3 10.7 24 24 24s24-10.7 24-24l0-192c0-13.3-10.7-24-24-24z"]],"fa-volume-high":["0 0 640 512",["M533.6 32.5c-10.3-8.4-25.4-6.8-33.8 3.5s-6.8 25.4 3.5 33.8C557.5 113.8 592 180.8 592 256s-34.5 142.2-88.7 186.3c-10.3 8.4-11.8 23.5-3.5 33.8s23.5 11.8 33.8 3.5C598.5 426.7 640 346.2 640 256S598.5 85.2 533.6 32.5zM473.1 107c-10.3-8.4-25.4-6.8-33.8 3.5s-6.8 25.4 3.5 33.8C475.3 170.7 496 210.9 496 256s-20.7 85.3-53.2 111.8c-10.3 8.4-11.8 23.5-3.5 33.8s23.5 11.8 33.8 3.5c43.2-35.2 70.9-88.9 70.9-149s-27.7-113.8-70.9-149zm-60.5 74.5c-10.3-8.4-25.4-6.8-33.8 3.5s-6.8 25.4 3.5 33.8C393.1 227.6 400 241 400 256s-6.9 28.4-17.7 37.3c-10.3 8.4-11.8 23.5-3.5 33.8s23.5 11.8 33.8 3.5C434.1 312.9 448 286.1 448 256s-13.9-56.9-35.4-74.5zM80 352l48 0 134.1 119.2c6.4 5.7 14.6 8.8 23.1 8.8 19.2 0 34.8-15.6 34.8-34.8l0-378.4c0-19.2-15.6-34.8-34.8-34.8-8.5 0-16.7 3.1-23.1 8.8L128 160 80 160c-26.5 0-48 21.5-48 48l0 96c0 26.5 21.5 48 48 48z"]],"fa-wand-magic-sparkles":["0 0 576 512",["M263.4-27L278.2 9.8 315 24.6c3 1.2 5 4.2 5 7.4s-2 6.2-5 7.4L278.2 54.2 263.4 91c-1.2 3-4.2 5-7.4 5s-6.2-2-7.4-5L233.8 54.2 197 39.4c-3-1.2-5-4.2-5-7.4s2-6.2 5-7.4L233.8 9.8 248.6-27c1.2-3 4.2-5 7.4-5s6.2 2 7.4 5zM110.7 41.7l21.5 50.1 50.1 21.5c5.9 2.5 9.7 8.3 9.7 14.7s-3.8 12.2-9.7 14.7l-50.1 21.5-21.5 50.1c-2.5 5.9-8.3 9.7-14.7 9.7s-12.2-3.8-14.7-9.7L59.8 164.2 9.7 142.7C3.8 140.2 0 134.4 0 128s3.8-12.2 9.7-14.7L59.8 91.8 81.3 41.7C83.8 35.8 89.6 32 96 32s12.2 3.8 14.7 9.7zM464 304c6.4 0 12.2 3.8 14.7 9.7l21.5 50.1 50.1 21.5c5.9 2.5 9.7 8.3 9.7 14.7s-3.8 12.2-9.7 14.7l-50.1 21.5-21.5 50.1c-2.5 5.9-8.3 9.7-14.7 9.7s-12.2-3.8-14.7-9.7l-21.5-50.1-50.1-21.5c-5.9-2.5-9.7-8.3-9.7-14.7s3.8-12.2 9.7-14.7l50.1-21.5 21.5-50.1c2.5-5.9 8.3-9.7 14.7-9.7zM460 0c11 0 21.6 4.4 29.5 12.2l42.3 42.3C539.6 62.4 544 73 544 84s-4.4 21.6-12.2 29.5l-88.2 88.2-101.3-101.3 88.2-88.2C438.4 4.4 449 0 460 0zM44.2 398.5L308.4 134.3 409.7 235.6 145.5 499.8C137.6 507.6 127 512 116 512s-21.6-4.4-29.5-12.2L44.2 457.5C36.4 449.6 32 439 32 428s4.4-21.6 12.2-29.5z"]],"fa-globe":["0 0 512 512",["M351.9 280l-190.9 0c2.9 64.5 17.2 123.9 37.5 167.4 11.4 24.5 23.7 41.8 35.1 52.4 11.2 10.5 18.9 12.2 22.9 12.2s11.7-1.7 22.9-12.2c11.4-10.6 23.7-28 35.1-52.4 20.3-43.5 34.6-102.9 37.5-167.4zM160.9 232l190.9 0C349 167.5 334.7 108.1 314.4 64.6 303 40.2 290.7 22.8 279.3 12.2 268.1 1.7 260.4 0 256.4 0s-11.7 1.7-22.9 12.2c-11.4 10.6-23.7 28-35.1 52.4-20.3 43.5-34.6 102.9-37.5 167.4zm-48 0C116.4 146.4 138.5 66.9 170.8 14.7 78.7 47.3 10.9 131.2 1.5 232l111.4 0zM1.5 280c9.4 100.8 77.2 184.7 169.3 217.3-32.3-52.2-54.4-131.7-57.9-217.3L1.5 280zm398.4 0c-3.5 85.6-25.6 165.1-57.9 217.3 92.1-32.7 159.9-116.5 169.3-217.3l-111.4 0zm111.4-48C501.9 131.2 434.1 47.3 342 14.7 374.3 66.9 396.4 146.4 399.9 232l111.4 0z"]]};
+    function hlIcons(root) {
+        (root.querySelectorAll ? root.querySelectorAll('i.fa-solid') : []).forEach(i => {
+            const n = [...i.classList].find(c => c.startsWith('fa-') && c !== 'fa-solid');
+            const d = ICONS[n]; if (!d) return;
+            const cls = [...i.classList].filter(c => !c.startsWith('fa-')).join(' ');
+            i.outerHTML = '<svg viewBox="' + d[0] + '" fill="currentColor" aria-hidden="true" class="hl-ico ' + cls + '">' + d[1].map(p => '<path d="' + p + '"/>').join('') + '</svg>';
+        });
+    }
+    hlIcons(document);
+    new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(n => { if (n.nodeType === 1) { if (n.matches && n.matches('i.fa-solid')) hlIcons(n.parentNode); else hlIcons(n); } }))).observe(document.body, { childList: true, subtree: true });
+
+    // ---------- Outils ----------
+    const $ = (s) => document.querySelector(s);
+    const esc = (t) => String(t == null ? '' : t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+    const fmt = (ms) => { const s = Math.ceil(ms / 1000); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+    const store = {
+        get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
+        set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } }
+    };
+    const langOf = (code) => LANGS.find(l => l.code === code) || LANGS[0];
+
+    // ---------- Langue de l'appli (20 langues) ----------
+    function detectUi() {
+        const saved = store.get('hl-ui', '');
+        if (UI[saved]) return saved;
+        const prefs = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en']);
+        for (const p of prefs) { const c = String(p).toLowerCase().slice(0, 2); if (UI[c]) return c; }
+        return 'en';
+    }
+    let ui = detectUi();
+    const uiInfo = () => UI_LANGS.find(l => l.code === ui) || UI_LANGS[0];
+    function t(key, vars) {
+        let s = (UI[ui] && UI[ui][key] != null) ? UI[ui][key] : (UI.en[key] != null ? UI.en[key] : key);
+        if (vars) for (const k in vars) s = s.split('{' + k + '}').join(vars[k]);
+        return s;
+    }
+    function applyUi() {
+        document.documentElement.lang = ui;
+        document.documentElement.dir = uiInfo().rtl ? 'rtl' : 'ltr';
+        document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+        document.querySelectorAll('[data-i18n-aria]').forEach(el => el.setAttribute('aria-label', t(el.dataset.i18nAria)));
+        document.querySelectorAll('[data-i18n-ph]').forEach(el => el.setAttribute('placeholder', t(el.dataset.i18nPh)));
+        const s = $('#uiLang');
+        if (s && !s.options.length) s.innerHTML = UI_LANGS.map(l => '<option value="' + l.code + '">' + l.name + '</option>').join('');
+        if (s) s.value = ui;
+        updNet(); updSound(); updApi();
+    }
+    function imgHTML(img) {
+        if (img && img.startsWith('svg:')) return SVGS[img.slice(4)] || '';
+        return '<span class="emoji" aria-hidden="true">' + esc(img || '💬') + '</span>';
+    }
+
+    // ---------- État ----------
+    let missed = store.get('hl-missed2', []);          // clés "langue:mot"
+    let custom = store.get('hl-custom', []);           // sujets créés par l'IA
+    let sel = store.get('hl-sel', { lang: 'en', theme: 'resto' }); // langue + thème choisis
+    if (!LIB[sel.lang]) sel.lang = 'en';
+
+    function currentLesson() {
+        const lang = langOf(sel.lang);
+        if (sel.theme.startsWith('custom:')) {
+            const c = custom.find(x => 'custom:' + x.id === sel.theme);
+            if (c) return { title: c.title, icon: '✨', lang: langOf(c.lang), items: c.items.map(it => Object.assign({ key: c.lang + ':' + it.word }, it)) };
+            sel.theme = 'resto';
+        }
+        const t = THEMES.find(x => x.id === sel.theme) || THEMES[1];
+        const items = LIB[lang.code][t.id].map((e, i) => {
+            const ex = EXAMPLES[lang.code + ':' + e.word];
+            // astuces et prononciations « à la française » : seulement pour l'appli en français
+            const isFr = ui === 'fr';
+            return { key: lang.code + ':' + e.word, word: e.word, roman: e.roman, ph: isFr ? e.ph : '', tip: isFr ? e.tip : '', fr: MEANING[ui][t.id][i], img: t.img[i], ex: ex && isFr ? ex[0] : '', exFr: ex && isFr ? ex[1] : '' };
+        });
+        return { title: UI[ui].themes[THEMES.indexOf(t)], icon: t.icon, lang, items };
+    }
+
+    const SCREENS = ['scrHome', 'scrBreath', 'scrCards', 'scrQuiz', 'scrResults'];
+    function show(id) {
+        SCREENS.forEach(s => { $('#' + s).hidden = s !== id; });
+        $('#steps').hidden = id === 'scrHome';
+        window.scrollTo(0, 0);
+    }
+    function setStep(n) {
+        document.querySelectorAll('.step').forEach(li => {
+            const k = +li.dataset.step;
+            li.className = 'step rounded-full border px-3 py-2 text-center ' +
+                (k === n ? 'border-indigo-400 bg-indigo-600/30 text-white' :
+                 k < n ? 'border-slate-700 text-indigo-300' : 'border-slate-700 text-slate-500');
+        });
+    }
+
+    // ---------- Réseau ----------
+    function updNet() {
+        const on = navigator.onLine;
+        $('#netPill').textContent = on ? t('on') : t('off');
+        $('#netPill').className = 'text-xs rounded-full px-2 py-1 border whitespace-nowrap ' + (on ? 'border-emerald-500/40 text-emerald-300' : 'border-amber-500/40 text-amber-300');
+    }
+    window.addEventListener('online', updNet);
+    window.addEventListener('offline', updNet);
+
+    // ---------- Fond sonore binaural (216 Hz / 220 Hz = battement de 4 Hz) ----------
+    let ctx, master, oscL, oscR;
+    const vol = () => +$('#soundVol').value * 0.35;
+    function startSound() {
+        if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
+        if (ctx.state === 'suspended') ctx.resume();
+        if (oscL) return;
+        master = ctx.createGain(); master.gain.value = 0; master.connect(ctx.destination);
+        const merger = ctx.createChannelMerger(2); merger.connect(master);
+        oscL = ctx.createOscillator(); oscR = ctx.createOscillator();
+        oscL.frequency.value = 216; oscR.frequency.value = 220;
+        oscL.connect(merger, 0, 0); oscR.connect(merger, 0, 1);
+        oscL.start(); oscR.start();
+        master.gain.setTargetAtTime(vol(), ctx.currentTime, 0.6);
+        updSound();
+    }
+    function stopSound() {
+        if (!oscL) return;
+        master.gain.setTargetAtTime(0, ctx.currentTime, 0.25);
+        const a = oscL, b = oscR; oscL = oscR = null;
+        setTimeout(() => { a.stop(); b.stop(); }, 1500);
+        updSound();
+    }
+    function updSound() {
+        $('#soundLabel').textContent = oscL ? t('sndOn') : t('sndOff');
+        $('#btnSound').classList.toggle('bg-indigo-600', !!oscL);
+        $('#btnSound').classList.toggle('border-indigo-400', !!oscL);
+    }
+    $('#btnSound').addEventListener('click', () => oscL ? stopSound() : startSound());
+    $('#soundVol').addEventListener('input', () => { if (master) master.gain.setTargetAtTime(vol(), ctx.currentTime, 0.1); });
+
+    // ---------- Voix (synthèse vocale de l'appareil) ----------
+    const synth = window.speechSynthesis;
+    function pickVoice(lang) {
+        if (!synth) return null;
+        const vs = synth.getVoices();
+        const base = lang.slice(0, 2).toLowerCase();
+        return vs.find(v => v.lang.replace('_', '-') === lang) ||
+               vs.find(v => v.lang.toLowerCase().startsWith(base) || (base === 'nb' && v.lang.toLowerCase().startsWith('no')));
+    }
+    function speak(text, lang, rate) {
+        if (!synth || !text) return;
+        synth.cancel();
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = lang; u.rate = rate || 0.9;
+        const v = pickVoice(lang); if (v) u.voice = v;
+        synth.speak(u);
+    }
+    if (synth) synth.onvoiceschanged = () => {};
+    let lesson = null;
+    const sayWord = (w) => speak(w, lesson.lang.voice, 0.8);
+
+    // ---------- Accueil ----------
+    function renderHome() {
+        store.set('hl-sel', sel);
+        const L = currentLesson();
+        $('#selIcon').textContent = L.icon;
+        $('#selTitle').textContent = L.title;
+        $('#selSub').textContent = L.lang.flag + ' ' + LANG_ENDONYM[L.lang.code] + ' · ' + t('sub', { n: L.items.length });
+        const n = L.items.filter(it => missed.includes(it.key)).length;
+        $('#reviewNote').hidden = !n;
+        if (n) $('#reviewNote').textContent = n > 1 ? t('revN', { n }) : t('rev1');
+
+        $('#langGrid').innerHTML = LANGS.map(l =>
+            `<button data-lang="${l.code}" class="lang-btn p-3 rounded-xl border text-left transition flex items-center justify-between ${l.code === sel.lang ? 'bg-indigo-600/30 border-indigo-400' : 'bg-slate-800 border-slate-700 hover:bg-slate-700'}">
+                <span>${l.flag} ${LANG_ENDONYM[l.code]}</span>${l.code === sel.lang ? '<i class="fa-solid fa-check text-indigo-300"></i>' : ''}</button>`).join('');
+
+        $('#themeGrid').innerHTML = THEMES.map((th, ti) => {
+            const keys = LIB[sel.lang][th.id].map(e => sel.lang + ':' + e.word);
+            const m = keys.filter(k => missed.includes(k)).length;
+            const on = sel.theme === th.id;
+            return `<button data-theme="${th.id}" class="theme-btn p-4 rounded-xl border text-start transition ${on ? 'bg-indigo-600/30 border-indigo-400' : 'bg-cardbg border-slate-800 hover:border-slate-600'}">
+                <span class="emoji text-3xl block mb-2">${th.icon}</span>
+                <span class="font-semibold block">${esc(UI[ui].themes[ti])}</span>
+                <span class="text-xs ${m ? 'text-amber-300' : 'text-slate-500'}">${m ? esc(t('toRev', { n: m })) : esc(t('w10'))}</span></button>`;
+        }).join('');
+
+        const mine = custom.filter(c => c.lang === sel.lang);
+        $('#myWrap').hidden = !mine.length;
+        $('#myGrid').innerHTML = mine.map(c => {
+            const on = sel.theme === 'custom:' + c.id;
+            return `<div class="relative">
+                <button data-theme="custom:${c.id}" class="theme-btn w-full p-4 rounded-xl border text-left transition ${on ? 'bg-purple-600/30 border-purple-400' : 'bg-cardbg border-slate-800 hover:border-slate-600'}">
+                <span class="emoji text-3xl block mb-2">${esc(c.items[0] && c.items[0].img || '✨')}</span>
+                <span class="font-semibold block pr-6">${esc(c.title)}</span>
+                <span class="text-xs text-slate-500">${esc(t('mineCount', { n: c.items.length }))}</span></button>
+                <button data-del="${c.id}" class="del-btn absolute top-2 right-2 w-8 h-8 rounded-full text-slate-500 hover:text-rose-300 hover:bg-slate-800" aria-label="${esc(t('del'))}"><i class="fa-solid fa-trash-can"></i></button></div>`;
+        }).join('');
+    }
+    $('#langGrid').addEventListener('click', e => {
+        const b = e.target.closest('[data-lang]'); if (!b) return;
+        sel.lang = b.dataset.lang;
+        if (sel.theme.startsWith('custom:')) sel.theme = 'resto';
+        renderHome();
+    });
+    document.addEventListener('click', e => {
+        const t = e.target.closest('.theme-btn');
+        if (t) { sel.theme = t.dataset.theme; renderHome(); window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+        const d = e.target.closest('.del-btn');
+        if (d) {
+            if (d.dataset.confirm !== '1') { d.dataset.confirm = '1'; d.innerHTML = '<i class="fa-solid fa-check"></i>'; d.setAttribute('aria-label', t('delOk')); d.classList.add('text-rose-300'); return; }
+            custom = custom.filter(c => String(c.id) !== d.dataset.del); store.set('hl-custom', custom);
+            if (sel.theme === 'custom:' + d.dataset.del) sel.theme = 'resto';
+            renderHome();
+        }
+    });
+    $('#btnStart').addEventListener('click', startBreath);
+    $('#btnSkipToCards').addEventListener('click', () => { startSound(); startCards(); });
+    $('#btnLogo').addEventListener('click', goHome);
+    function goHome() { stopBreath(); if (synth) synth.cancel(); renderHome(); show('scrHome'); }
+
+    // ---------- Sujet libre par IA ----------
+    let sampleFn = null;
+    if (window.claude && window.claude.use) {
+        window.claude.use('sample').then(s => { sampleFn = s; updApi(); }).catch(() => {});
+    }
+    function updApi() {
+        const key = store.get('hl-apikey', '');
+        if (sampleFn) { $('#aiSettings').hidden = true; return; }
+        $('#apiState').textContent = key ? t('keyOk') : t('keyNone');
+    }
+    $('#apiSave').addEventListener('click', () => {
+        const k = $('#apiKey').value.trim();
+        store.set('hl-apikey', k); $('#apiKey').value = '';
+        $('#apiState').textContent = k ? t('keyOk') : t('keyDel');
+    });
+    function aiMsg(text, kind) {
+        const m = $('#aiMsg'); m.hidden = !text; m.textContent = text;
+        m.className = 'text-sm mt-3 ' + (kind === 'err' ? 'text-rose-300' : kind === 'ok' ? 'text-emerald-300' : 'text-slate-300');
+    }
+    const EN_NAME = { fr: 'French', en: 'English', es: 'Spanish', de: 'German', it: 'Italian', pt: 'Portuguese', nl: 'Dutch', pl: 'Polish', sv: 'Swedish', ru: 'Russian', uk: 'Ukrainian', tr: 'Turkish', ar: 'Arabic', hi: 'Hindi', zh: 'Chinese (Simplified)', ja: 'Japanese', ko: 'Korean', id: 'Indonesian', vi: 'Vietnamese', th: 'Thai', no: 'Norwegian (Bokmål)' };
+    function lessonPrompt(topic, lang) {
+        const nonLatin = ['zh', 'ja', 'ko', 'ru', 'ar'].includes(lang.code);
+        const target = EN_NAME[lang.code], mother = EN_NAME[ui];
+        return `You are a language teacher for native speakers of ${mother}. Prepare a lesson of 10 useful words or short expressions in ${target} on the topic: "${topic}".
+Reply only with a valid JSON object, no text around it, in this shape:
+{"title": "short topic title in ${mother}",
+ "items": [{"word": "the word in ${target}${nonLatin ? ', in its native script' : ''}",
+            "roman": "${nonLatin ? 'standard romanization (pinyin with tones, romaji, etc.)' : 'empty string'}",
+            "ph": "approximate pronunciation written for a ${mother} speaker, syllables separated by hyphens",
+            "fr": "translation in ${mother}",
+            "tip": "short memory trick in ${mother}, informal tone, linking the sound of the word to an image",
+            "emoji": "one single emoji illustrating the word",
+            "ex": "very short example sentence in ${target}",
+            "exFr": "translation of the sentence in ${mother}"}]}
+Exactly 10 items. Accurate, common vocabulary, most useful first.`;
+    }
+    function parseJSON(text) {
+        const a = text.indexOf('{'), b = text.lastIndexOf('}');
+        if (a < 0 || b < a) throw Object.assign(new Error('format'), { code: 'format' });
+        try { return JSON.parse(text.slice(a, b + 1)); } catch (e) { throw Object.assign(new Error('format'), { code: 'format' }); }
+    }
+    async function aiGenerate(topic, lang) {
+        const prompt = lessonPrompt(topic, lang);
+        if (sampleFn) {
+            const res = await sampleFn(prompt, { modelTier: 'default' });
+            return parseJSON(res.text);
+        }
+        const key = store.get('hl-apikey', '');
+        if (!key) throw Object.assign(new Error('nokey'), { code: 'nokey' });
+        const r = await fetch('https://api.anthropic.com/v1/messages', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json', 'x-api-key': key, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+            body: JSON.stringify({ model: 'claude-haiku-5-5', max_tokens: 4000, messages: [{ role: 'user', content: prompt }] })
+        });
+        if (!r.ok) throw Object.assign(new Error('http'), { code: r.status === 401 ? 'badkey' : 'http' });
+        const data = await r.json();
+        return parseJSON((data.content || []).map(c => c.text || '').join(''));
+    }
+    $('#aiForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const topic = $('#aiTopic').value.trim(); if (!topic) return;
+        if (!navigator.onLine) {
+            aiMsg(t('offline'), 'err');
+            return;
+        }
+        const lang = langOf(sel.lang);
+        $('#aiBtn').disabled = true;
+        aiMsg(t('aiWork', { t: topic }));
+        try {
+            const out = await aiGenerate(topic, lang);
+            const items = (out.items || []).filter(it => it && it.word && it.fr).slice(0, 10).map(it => ({
+                word: String(it.word), roman: String(it.roman || ''), ph: String(it.ph || ''), fr: String(it.fr),
+                tip: String(it.tip || ''), img: String(it.emoji || '💬'), ex: String(it.ex || ''), exFr: String(it.exFr || '')
+            }));
+            if (items.length < 4) throw Object.assign(new Error('few'), { code: 'format' });
+            const c = { id: Date.now(), lang: lang.code, ui, title: String(out.title || topic).slice(0, 60), topic, items };
+            custom.unshift(c);
+            const saved = store.set('hl-custom', custom);
+            sel.theme = 'custom:' + c.id;
+            $('#aiTopic').value = '';
+            renderHome();
+            aiMsg(saved ? t('aiOk') : t('aiNoSave'), saved ? 'ok' : 'err');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } catch (err) {
+            const code = err && err.code;
+            aiMsg(t(code === 'nokey' ? 'eKey' : code === 'badkey' ? 'eBad' : code === 'not_granted' ? 'eDeny' : code === 'rate_limited' ? 'eRate' : code === 'format' ? 'eFmt' : 'eGen'), 'err');
+        } finally { $('#aiBtn').disabled = false; }
+    });
+
+    // ---------- Étape 1 : respiration ----------
+    let breathTimer, phaseTimer, breathEnd;
+    const guide = () => $('#voiceGuide').checked;
+    function startBreath() {
+        lesson = currentLesson();
+        show('scrBreath'); setStep(1); startSound();
+        breathEnd = Date.now() + (+$('#breathLen').value) * 60000;
+        if (guide()) speak(t('vIntro'), uiInfo().voice, 0.85);
+        cycle(); tick();
+        breathTimer = setInterval(tick, 250);
+    }
+    function cycle() {
+        const c = $('#breathCircle'), l = $('#breathLabel');
+        c.style.transitionDuration = '4s'; c.style.transform = 'scale(1.3)'; l.textContent = t('inh');
+        phaseTimer = setTimeout(() => {
+            c.style.transitionDuration = '6s'; c.style.transform = 'scale(0.85)'; l.textContent = t('exh');
+            phaseTimer = setTimeout(cycle, 6000);
+        }, 4000);
+    }
+    function tick() {
+        const left = Math.max(0, breathEnd - Date.now());
+        $('#breathTime').textContent = fmt(left);
+        if (!left) endBreath();
+    }
+    function stopBreath() { clearInterval(breathTimer); clearTimeout(phaseTimer); breathTimer = null; }
+    function endBreath() {
+        stopBreath();
+        if (guide()) speak(t('vEnd'), uiInfo().voice, 0.9);
+        setTimeout(() => startCards(), guide() ? 2500 : 0);
+    }
+    $('#btnEndBreath').addEventListener('click', () => { stopBreath(); if (synth) synth.cancel(); startCards(); });
+
+    // ---------- Étape 2 : cartes ----------
+    let deck = [], ci = 0;
+    function startCards(list) {
+        if (!list) {
+            lesson = currentLesson();
+            const first = lesson.items.filter(it => missed.includes(it.key));
+            list = first.concat(lesson.items.filter(it => !missed.includes(it.key)));
+        }
+        deck = list; ci = 0;
+        show('scrCards'); setStep(2); renderCard();
+    }
+    function renderCard() {
+        const w = deck[ci];
+        $('#cardImg').innerHTML = imgHTML(w.img);
+        $('#cardWord').textContent = w.word;
+        $('#cardWord').dir = lesson.lang.rtl ? 'rtl' : 'auto';
+        $('#cardRoman').textContent = w.roman; $('#cardRoman').hidden = !w.roman;
+        $('#cardPh').textContent = w.ph; $('#cardPhBox').hidden = !w.ph;
+        $('#cardFr').textContent = w.fr;
+        $('#cardTip').textContent = w.tip; $('#cardTipBox').hidden = !w.tip;
+        $('#cardEx').textContent = w.ex; $('#cardExFr').textContent = w.exFr; $('#cardExBox').hidden = !w.ex;
+        $('#cardCount').textContent = (ci + 1) + ' / ' + deck.length;
+        $('#cardProgress').style.width = ((ci + 1) / deck.length * 100) + '%';
+        $('#cardReview').hidden = !missed.includes(w.key);
+        $('#btnPrev').disabled = ci === 0;
+        $('#btnNext').innerHTML = esc(ci === deck.length - 1 ? t('toQuiz') : t('next')) + ' <i class="fa-solid fa-arrow-right"></i>';
+        setTimeout(() => sayWord(w.word), 300);
+    }
+    $('#btnListen').addEventListener('click', () => { const w = deck[ci]; speak(w.ex ? w.word + '. ' + w.ex : w.word, lesson.lang.voice, 0.8); });
+    $('#btnPrev').addEventListener('click', () => { if (ci > 0) { ci--; renderCard(); } });
+    $('#btnNext').addEventListener('click', () => { if (ci < deck.length - 1) { ci++; renderCard(); } else startQuiz(); });
+
+    // ---------- Étape 3 : quiz ----------
+    let qs = [], qi = 0, answers = [], cur = null;
+    function startQuiz() {
+        const pool = lesson.items;
+        qs = shuffle(deck).map((w, i) => ({
+            w, type: i % 2 ? 'audio' : 'image',
+            opts: shuffle([w].concat(shuffle(pool.filter(x => x.key !== w.key)).slice(0, 3)))
+        }));
+        qi = 0; answers = [];
+        show('scrQuiz'); setStep(3); renderQ();
+    }
+    function optLabel(o, isImg) {
+        if (!isImg) return esc(o.fr);
+        return `<span dir="auto">${esc(o.word)}</span>${o.roman ? `<span class="block text-sm text-slate-400">${esc(o.roman)}</span>` : ''}`;
+    }
+    function renderQ() {
+        const q = qs[qi]; cur = null;
+        $('#qCount').textContent = t('q', { i: qi + 1, n: qs.length });
+        $('#qProgress').style.width = ((qi + 1) / qs.length * 100) + '%';
+        const good = answers.filter(a => a.ok).length;
+        $('#qScore').textContent = qi ? t('good', { n: good }) : '';
+        const isImg = q.type === 'image';
+        $('#qPrompt').textContent = isImg ? t('qHow', { w: q.w.fr }) : t('qEar');
+        $('#qImg').hidden = !isImg; $('#qListen').hidden = isImg;
+        if (isImg) $('#qImg').innerHTML = imgHTML(q.w.img); else setTimeout(() => sayWord(q.w.word), 300);
+        $('#qOpts').innerHTML = q.opts.map((o, i) =>
+            `<button data-i="${i}" class="opt-btn bg-slate-800 hover:bg-indigo-600/30 border border-slate-700 rounded-xl p-4 text-lg transition min-w-0 break-words">${optLabel(o, isImg)}</button>`).join('');
+        $('#qFeedback').hidden = true; $('#qConf').hidden = true;
+    }
+    $('#qListen').addEventListener('click', () => sayWord(qs[qi].w.word));
+    $('#qOpts').addEventListener('click', (e) => {
+        const b = e.target.closest('.opt-btn'); if (!b || cur) return;
+        const q = qs[qi], pick = q.opts[+b.dataset.i], ok = pick === q.w;
+        cur = { w: q.w, ok };
+        document.querySelectorAll('.opt-btn').forEach((btn, i) => {
+            btn.disabled = true;
+            if (q.opts[i] === q.w) btn.className = 'opt-btn border border-emerald-400 bg-emerald-600/30 rounded-xl p-4 text-lg min-w-0 break-words';
+            else if (btn === b) btn.className = 'opt-btn border border-rose-400 bg-rose-600/30 rounded-xl p-4 text-lg min-w-0 break-words';
+            else btn.classList.add('opacity-40');
+        });
+        const fb = $('#qFeedback');
+        const w = q.w, rom = w.roman ? ' (' + esc(w.roman) + ')' : '';
+        fb.className = 'mt-5 rounded-xl p-4 text-start border ' + (ok ? 'bg-emerald-900/30 border-emerald-500/30' : 'bg-rose-900/30 border-rose-500/30');
+        fb.innerHTML = ok
+            ? `<p class="font-semibold text-emerald-300">${esc(t('bravo'))} <span dir="auto">${esc(w.word)}</span>${rom} = ${esc(w.fr)}</p>`
+            : `<p class="font-semibold text-rose-300">${t('was', { w: '<span dir="auto">' + esc(w.word) + '</span>' + rom })} = ${esc(w.fr)}</p>${w.tip ? `<p class="text-slate-300 text-sm mt-1">${esc(w.tip)}</p>` : ''}`;
+        fb.hidden = false; $('#qConf').hidden = false;
+        if (!ok) sayWord(w.word);
+    });
+    document.querySelectorAll('.conf-btn').forEach(b => b.addEventListener('click', () => {
+        if (!cur) return;
+        answers.push(Object.assign({}, cur, { sure: b.dataset.sure === '1' }));
+        qi++;
+        if (qi < qs.length) renderQ(); else showResults();
+    }));
+
+    // ---------- Résultats ----------
+    let missedNow = [];
+    function showResults() {
+        show('scrResults'); setStep(3);
+        const n = answers.length, good = answers.filter(a => a.ok).length;
+        const pct = Math.round(good / n * 100);
+        const sure = answers.filter(a => a.sure).length;
+        const calib = answers.filter(a => a.ok === a.sure).length;
+        missedNow = answers.filter(a => !a.ok).map(a => a.w);
+        const okKeys = answers.filter(a => a.ok).map(a => a.w.key);
+        missed = missed.filter(k => !okKeys.includes(k)).concat(missedNow.map(w => w.key).filter(k => !missed.includes(k)));
+        store.set('hl-missed2', missed);
+
+        const C = 314.16;
+        $('#ring').style.transition = 'stroke-dashoffset 1.2s ease-out';
+        $('#ring').setAttribute('stroke-dashoffset', C);
+        requestAnimationFrame(() => requestAnimationFrame(() => $('#ring').setAttribute('stroke-dashoffset', C * (1 - pct / 100))));
+        $('#ringText').textContent = pct + ' %';
+        $('#resTitle').textContent = t(pct === 100 ? 'r100' : pct >= 70 ? 'r70' : pct >= 40 ? 'r40' : 'r0');
+        $('#resScore').textContent = t('rScore', { g: good, n });
+        $('#resConf').textContent = t('rConf', { p: Math.round(sure / n * 100) });
+        $('#resCalib').textContent = t('rCal', { c: calib, n });
+        $('#resMissedWrap').hidden = !missedNow.length;
+        $('#btnReview').hidden = !missedNow.length;
+        $('#resMissed').innerHTML = missedNow.map(w =>
+            `<li class="flex items-center gap-3 bg-slate-800/60 rounded-xl p-3"><div class="card-img mini w-12 h-12 shrink-0">${imgHTML(w.img)}</div><div class="min-w-0"><p><span class="font-semibold" dir="auto">${esc(w.word)}</span>${w.roman ? ' <span class="text-indigo-300">' + esc(w.roman) + '</span>' : ''} <span class="text-slate-400">· ${esc(w.fr)}</span></p>${w.tip ? `<p class="text-sm text-slate-400">${esc(w.tip)}</p>` : ''}</div></li>`).join('');
+        if (guide()) speak(pct >= 70 ? t('vGood') : t('vOk'), uiInfo().voice, 0.9);
+    }
+    $('#btnReview').addEventListener('click', () => startCards(missedNow));
+    $('#btnHome').addEventListener('click', goHome);
+
+    $('#uiLang').addEventListener('change', e => { ui = e.target.value; store.set('hl-ui', ui); applyUi(); renderHome(); });
+    applyUi(); renderHome();
+    </script>
+    <script>
+        if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+            window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
+        }
+    </script>
+</body>
+</html>
