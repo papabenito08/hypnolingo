@@ -33,6 +33,7 @@
     --color-indigo-600: oklch(51.1% 0.262 276.966);
     --color-indigo-900: oklch(35.9% 0.144 278.697);
     --color-indigo-950: oklch(25.7% 0.09 281.288);
+    --color-purple-200: oklch(90.2% 0.063 306.703);
     --color-purple-300: oklch(82.7% 0.119 306.383);
     --color-purple-400: oklch(71.4% 0.203 305.504);
     --color-purple-500: oklch(62.7% 0.265 303.9);
@@ -60,6 +61,8 @@
     --text-xs--line-height: calc(1 / 0.75);
     --text-sm: 0.875rem;
     --text-sm--line-height: calc(1.25 / 0.875);
+    --text-base: 1rem;
+    --text-base--line-height: calc(1.5 / 1);
     --text-lg: 1.125rem;
     --text-lg--line-height: calc(1.75 / 1.125);
     --text-xl: 1.25rem;
@@ -74,6 +77,8 @@
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
     --tracking-widest: 0.1em;
+    --leading-snug: 1.375;
+    --radius-sm: 0.25rem;
     --radius-lg: 0.5rem;
     --radius-xl: 0.75rem;
     --radius-2xl: 1rem;
@@ -258,6 +263,9 @@
   .mt-1 {
     margin-top: var(--spacing);
   }
+  .mt-2 {
+    margin-top: calc(var(--spacing) * 2);
+  }
   .mt-3 {
     margin-top: calc(var(--spacing) * 3);
   }
@@ -354,6 +362,9 @@
   .h-full {
     height: 100%;
   }
+  .min-h-\[3\.5rem\] {
+    min-height: 3.5rem;
+  }
   .min-h-screen {
     min-height: 100vh;
   }
@@ -392,6 +403,9 @@
   }
   .max-w-\[60\%\] {
     max-width: 60%;
+  }
+  .max-w-\[85\%\] {
+    max-width: 85%;
   }
   .max-w-\[220px\] {
     max-width: 220px;
@@ -435,6 +449,12 @@
   .justify-center {
     justify-content: center;
   }
+  .justify-end {
+    justify-content: flex-end;
+  }
+  .justify-start {
+    justify-content: flex-start;
+  }
   .gap-2 {
     gap: calc(var(--spacing) * 2);
   }
@@ -472,6 +492,12 @@
   .rounded-xl {
     border-radius: var(--radius-xl);
   }
+  .rounded-br-sm {
+    border-bottom-right-radius: var(--radius-sm);
+  }
+  .rounded-bl-sm {
+    border-bottom-left-radius: var(--radius-sm);
+  }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
@@ -483,6 +509,10 @@
   .border-b {
     border-bottom-style: var(--tw-border-style);
     border-bottom-width: 1px;
+  }
+  .border-dashed {
+    --tw-border-style: dashed;
+    border-style: dashed;
   }
   .border-amber-500\/40 {
     border-color: color-mix(in srgb, oklch(76.9% 0.188 70.08) 40%, transparent);
@@ -527,6 +557,12 @@
     border-color: color-mix(in srgb, oklch(62.7% 0.265 303.9) 20%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       border-color: color-mix(in oklab, var(--color-purple-500) 20%, transparent);
+    }
+  }
+  .border-purple-500\/40 {
+    border-color: color-mix(in srgb, oklch(62.7% 0.265 303.9) 40%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-purple-500) 40%, transparent);
     }
   }
   .border-rose-400 {
@@ -575,6 +611,12 @@
     background-color: color-mix(in srgb, oklch(51.1% 0.262 276.966) 30%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-indigo-600) 30%, transparent);
+    }
+  }
+  .bg-indigo-600\/40 {
+    background-color: color-mix(in srgb, oklch(51.1% 0.262 276.966) 40%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-indigo-600) 40%, transparent);
     }
   }
   .bg-purple-500 {
@@ -747,6 +789,10 @@
     font-size: var(--text-4xl);
     line-height: var(--tw-leading, var(--text-4xl--line-height));
   }
+  .text-base {
+    font-size: var(--text-base);
+    line-height: var(--tw-leading, var(--text-base--line-height));
+  }
   .text-lg {
     font-size: var(--text-lg);
     line-height: var(--tw-leading, var(--text-lg--line-height));
@@ -762,6 +808,10 @@
   .text-xs {
     font-size: var(--text-xs);
     line-height: var(--tw-leading, var(--text-xs--line-height));
+  }
+  .leading-snug {
+    --tw-leading: var(--leading-snug);
+    line-height: var(--leading-snug);
   }
   .font-bold {
     --tw-font-weight: var(--font-weight-bold);
@@ -796,6 +846,9 @@
   }
   .text-indigo-300 {
     color: var(--color-indigo-300);
+  }
+  .text-purple-200 {
+    color: var(--color-purple-200);
   }
   .text-purple-300 {
     color: var(--color-purple-300);
@@ -845,6 +898,9 @@
   }
   .opacity-40 {
     opacity: 40%;
+  }
+  .opacity-70 {
+    opacity: 70%;
   }
   .shadow-2xl {
     --tw-shadow: 0 25px 50px -12px var(--tw-shadow-color, rgb(0 0 0 / 0.25));
@@ -941,6 +997,14 @@
     .hover\:bg-purple-500:hover {
       background-color: var(--color-purple-500);
     }
+    .hover\:bg-purple-900\/30:hover {
+      background-color: color-mix(in srgb, oklch(38.1% 0.176 304.987) 30%, transparent);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-purple-900\/30:hover {
+        background-color: color-mix(in oklab, var(--color-purple-900) 30%, transparent);
+      }
+    }
     .hover\:bg-slate-700:hover {
       background-color: var(--color-slate-700);
     }
@@ -956,6 +1020,9 @@
   }
   .disabled\:opacity-30:disabled {
     opacity: 30%;
+  }
+  .disabled\:opacity-40:disabled {
+    opacity: 40%;
   }
   @media (width >= 40rem) {
     .sm\:col-span-2 {
@@ -1073,6 +1140,10 @@
   syntax: "<length-percentage>";
   inherits: false;
   initial-value: 100%;
+}
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
 }
 @property --tw-font-weight {
   syntax: "*";
@@ -1279,6 +1350,7 @@
       --tw-gradient-from-position: 0%;
       --tw-gradient-via-position: 50%;
       --tw-gradient-to-position: 100%;
+      --tw-leading: initial;
       --tw-font-weight: initial;
       --tw-tracking: initial;
       --tw-ordinal: initial;
@@ -1391,6 +1463,12 @@
             <h2 class="text-sm uppercase tracking-widest text-slate-400 mb-3" data-i18n="hLang">1. Langue à apprendre</h2>
             <div id="langGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8"></div>
 
+            <!-- Niveau -->
+            <h2 class="text-sm uppercase tracking-widest text-slate-400 mb-3" data-i18n="lvlH">Niveau</h2>
+            <div id="lvlGrid" class="grid grid-cols-3 gap-3 mb-2"></div>
+            <p id="lvlNote" class="text-sm text-amber-300 mb-2" hidden></p>
+            <div class="mb-8"></div>
+
             <!-- Thèmes -->
             <h2 class="text-sm uppercase tracking-widest text-slate-400 mb-1" data-i18n="hTheme">2. Thème</h2>
             <p class="text-sm text-slate-500 mb-3" data-i18n="themeNote">Bibliothèque intégrée : marche sans connexion.</p>
@@ -1468,10 +1546,12 @@
                 <span id="cardReview" class="text-amber-300" hidden><i class="fa-solid fa-rotate"></i> <span data-i18n="review">À revoir</span></span>
             </div>
             <div class="h-1.5 rounded-full bg-slate-800 mb-4 overflow-hidden"><div id="cardProgress" class="h-full bg-indigo-500 transition-all" style="width:10%"></div></div>
+            <div id="cardThread" class="flex flex-col gap-2 mb-4" hidden></div>
             <div class="bg-cardbg border border-slate-800 rounded-2xl p-6 shadow-2xl">
-                <div class="grid sm:grid-cols-2 gap-6 items-center">
+                <div id="cardGrid" class="grid sm:grid-cols-2 gap-6 items-center">
                     <div class="card-img w-full max-w-[220px] aspect-square mx-auto rounded-2xl bg-gradient-to-br from-indigo-950 to-slate-900 border border-indigo-500/20 p-4" id="cardImg"></div>
                     <div class="min-w-0">
+                        <p id="cardRole" class="text-xs uppercase tracking-widest text-purple-300 mb-2" hidden></p>
                         <div class="flex items-center gap-3 mb-1 flex-wrap">
                             <h2 id="cardWord" class="text-4xl font-bold break-words min-w-0"></h2>
                             <button id="btnListen" class="w-11 h-11 shrink-0 rounded-full bg-indigo-600 hover:bg-indigo-500 flex items-center justify-center shadow-lg shadow-indigo-600/40" data-i18n-aria="listen" aria-label="Écouter la prononciation">
@@ -1486,6 +1566,7 @@
                             <p id="cardTip" class="text-slate-200"></p>
                         </div>
                         <p id="cardExBox" class="text-sm text-slate-300"><span id="cardEx" class="italic"></span><br><span id="cardExFr" class="text-slate-500"></span></p>
+                        <button id="btnScene" class="mt-2 text-sm px-4 py-2 rounded-full border border-purple-500/40 text-purple-200 hover:bg-purple-900/30" hidden><i class="fa-solid fa-play"></i> <span data-i18n="scene">Écouter toute la scène</span></button>
                     </div>
                 </div>
             </div>
@@ -1504,6 +1585,10 @@
             <div class="h-1.5 rounded-full bg-slate-800 mb-4 overflow-hidden"><div id="qProgress" class="h-full bg-purple-500 transition-all" style="width:10%"></div></div>
             <div class="bg-cardbg border border-slate-800 rounded-2xl p-6 shadow-2xl text-center">
                 <p id="qPrompt" class="text-lg mb-4"></p>
+                <div id="qCtx" class="mb-5 flex items-center justify-center gap-3" hidden>
+                    <p id="qCtxText" class="rounded-2xl rounded-bl-sm bg-slate-800 border border-slate-700 px-4 py-3 text-lg text-start"></p>
+                    <button id="qCtxListen" class="w-11 h-11 shrink-0 rounded-full bg-indigo-600 hover:bg-indigo-500 flex items-center justify-center" data-i18n-aria="listen" aria-label="Écouter"><i class="fa-solid fa-volume-high"></i></button>
+                </div>
                 <div id="qImg" class="card-img w-40 h-40 mx-auto mb-5 rounded-2xl bg-gradient-to-br from-indigo-950 to-slate-900 border border-indigo-500/20 p-3"></div>
                 <button id="qListen" class="w-24 h-24 mx-auto mb-5 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center text-3xl shadow-2xl shadow-indigo-500/40" data-i18n-aria="relisten" aria-label="Réécouter le mot">
                     <i class="fa-solid fa-volume-high"></i>
@@ -1555,6 +1640,7 @@
 
     <script src="i18n.js"></script>
     <script src="library.js"></script>
+    <script src="phrases.js"></script>
     <script>
 
     // Icônes intégrées (aucun fichier de police à télécharger)
@@ -1617,22 +1703,57 @@
     let custom = store.get('hl-custom', []);           // sujets créés par l'IA
     let sel = store.get('hl-sel', { lang: 'en', theme: 'resto' }); // langue + thème choisis
     if (!LIB[sel.lang]) sel.lang = 'en';
+    if (![1, 2, 3].includes(sel.level)) sel.level = 2;
+
+    // ---------- Phrases et dialogues ----------
+    const NOSPACE = { zh: 1, ja: 1 };       // ces langues s'écrivent sans espaces : les espaces du fichier séparent les blocs
+    const joinTiles = (code, tiles) => NOSPACE[code] ? tiles.join('') : tiles.join(' ');
+    function meanLang(learn) {               // langue des traductions : celle de l'appli si on l'a, sinon l'anglais
+        if (PHRASES[ui] && ui !== learn) return ui;
+        return learn === 'en' ? 'fr' : 'en';
+    }
+    function roleNames(themeId, learn) { return PHRASES[meanLang(learn)][themeId].roles; }
+    function phraseItems(code, themeId, level) {
+        const th = THEMES.find(x => x.id === themeId);
+        const P = PHRASES[code][themeId], ml = meanLang(code), M = PHRASES[ml][themeId];
+        const idx = level === 2 ? [0, 1, 2, 3, 4, 5, 6, 7] : [8, 9, 10, 11, 12, 13];
+        let prev = null;
+        return idx.map((i, k) => {
+            const tiles = P.l[i][0].split(' ').filter(Boolean);
+            const it = {
+                key: code + ':' + themeId + ':p' + i, phrase: true, word: joinTiles(code, tiles), tiles,
+                roman: P.l[i][1] || '', fr: joinTiles(ml, M.l[i][0].split(' ').filter(Boolean)),
+                img: level === 3 ? (k % 2 ? '🙋' : '🗣️') : th.icon, role: level === 3 ? k % 2 : -1,
+                ph: '', tip: '', ex: '', exFr: '', prev
+            };
+            if (level === 3) prev = it;
+            return it;
+        });
+    }
+    const levelKeys = (code, themeId, level) => level === 1
+        ? LIB[code][themeId].map(e => code + ':' + e.word)
+        : (level === 2 ? [0, 1, 2, 3, 4, 5, 6, 7] : [8, 9, 10, 11, 12, 13]).map(i => code + ':' + themeId + ':p' + i);
 
     function currentLesson() {
         const lang = langOf(sel.lang);
         if (sel.theme.startsWith('custom:')) {
             const c = custom.find(x => 'custom:' + x.id === sel.theme);
-            if (c) return { title: c.title, icon: '✨', lang: langOf(c.lang), items: c.items.map(it => Object.assign({ key: c.lang + ':' + it.word }, it)) };
+            if (c) return { title: c.title, icon: '✨', lang: langOf(c.lang), level: 1, items: c.items.map(it => Object.assign({ key: c.lang + ':' + it.word }, it)) };
             sel.theme = 'resto';
         }
         const t = THEMES.find(x => x.id === sel.theme) || THEMES[1];
+        if (sel.level > 1) {
+            return { title: UI[ui].themes[THEMES.indexOf(t)], icon: t.icon, lang, level: sel.level, themeId: t.id,
+                     roles: roleNames(t.id, lang.code), items: phraseItems(lang.code, t.id, sel.level),
+                     all: phraseItems(lang.code, t.id, 2).concat(phraseItems(lang.code, t.id, 3)) };
+        }
         const items = LIB[lang.code][t.id].map((e, i) => {
             const ex = EXAMPLES[lang.code + ':' + e.word];
             // astuces et prononciations « à la française » : seulement pour l'appli en français
             const isFr = ui === 'fr';
             return { key: lang.code + ':' + e.word, word: e.word, roman: e.roman, ph: isFr ? e.ph : '', tip: isFr ? e.tip : '', fr: MEANING[ui][t.id][i], img: t.img[i], ex: ex && isFr ? ex[0] : '', exFr: ex && isFr ? ex[1] : '' };
         });
-        return { title: UI[ui].themes[THEMES.indexOf(t)], icon: t.icon, lang, items };
+        return { title: UI[ui].themes[THEMES.indexOf(t)], icon: t.icon, lang, level: 1, items };
     }
 
     const SCREENS = ['scrHome', 'scrBreath', 'scrCards', 'scrQuiz', 'scrResults'];
@@ -1750,7 +1871,16 @@
         const L = currentLesson();
         $('#selIcon').textContent = L.icon;
         $('#selTitle').textContent = L.title;
-        $('#selSub').textContent = L.lang.flag + ' ' + LANG_ENDONYM[L.lang.code] + ' · ' + t('sub', { n: L.items.length });
+        $('#selSub').textContent = L.lang.flag + ' ' + LANG_ENDONYM[L.lang.code] + ' · ' + t(L.level === 2 ? 'subP' : L.level === 3 ? 'subD' : 'sub', { n: L.items.length });
+        const isCustom = sel.theme.startsWith('custom:');
+        $('#lvlGrid').innerHTML = [1, 2, 3].map(n => {
+            const on = sel.level === n;
+            return `<button data-level="${n}" class="lvl-btn p-3 rounded-xl border text-start transition ${on ? 'bg-indigo-600/30 border-indigo-400' : 'bg-slate-800 border-slate-700 hover:bg-slate-700'}${isCustom && n > 1 ? ' opacity-40' : ''}">
+                <span class="font-semibold block">${n} · ${esc(t('lvl' + n))}</span>
+                <span class="text-xs text-slate-400 block mt-1">${esc(t('lvl' + n + 'd'))}</span></button>`;
+        }).join('');
+        $('#lvlNote').hidden = !(isCustom && sel.level > 1);
+        $('#lvlNote').textContent = t('lvlAi');
         const n = L.items.filter(it => missed.includes(it.key)).length;
         $('#reviewNote').hidden = !n;
         if (n) $('#reviewNote').textContent = n > 1 ? t('revN', { n }) : t('rev1');
@@ -1760,13 +1890,14 @@
                 <span>${l.flag} ${LANG_ENDONYM[l.code]}</span>${l.code === sel.lang ? '<i class="fa-solid fa-check text-indigo-300"></i>' : ''}</button>`).join('');
 
         $('#themeGrid').innerHTML = THEMES.map((th, ti) => {
-            const keys = LIB[sel.lang][th.id].map(e => sel.lang + ':' + e.word);
+            const keys = levelKeys(sel.lang, th.id, sel.level);
             const m = keys.filter(k => missed.includes(k)).length;
             const on = sel.theme === th.id;
+            const what = sel.level === 2 ? t('p8') : sel.level === 3 ? t('dlg') : t('w10');
             return `<button data-theme="${th.id}" class="theme-btn p-4 rounded-xl border text-start transition ${on ? 'bg-indigo-600/30 border-indigo-400' : 'bg-cardbg border-slate-800 hover:border-slate-600'}">
                 <span class="emoji text-3xl block mb-2">${th.icon}</span>
                 <span class="font-semibold block">${esc(UI[ui].themes[ti])}</span>
-                <span class="text-xs ${m ? 'text-amber-300' : 'text-slate-500'}">${m ? esc(t('toRev', { n: m })) : esc(t('w10'))}</span></button>`;
+                <span class="text-xs ${m ? 'text-amber-300' : 'text-slate-500'}">${m ? esc(t('toRev', { n: m })) : esc(what)}</span></button>`;
         }).join('');
 
         const mine = custom.filter(c => c.lang === sel.lang);
@@ -1781,6 +1912,12 @@
                 <button data-del="${c.id}" class="del-btn absolute top-2 right-2 w-8 h-8 rounded-full text-slate-500 hover:text-rose-300 hover:bg-slate-800" aria-label="${esc(t('del'))}"><i class="fa-solid fa-trash-can"></i></button></div>`;
         }).join('');
     }
+    $('#lvlGrid').addEventListener('click', e => {
+        const b = e.target.closest('[data-level]'); if (!b) return;
+        sel.level = +b.dataset.level;
+        if (sel.level > 1 && sel.theme.startsWith('custom:')) sel.theme = 'resto';
+        renderHome();
+    });
     $('#langGrid').addEventListener('click', e => {
         const b = e.target.closest('[data-lang]'); if (!b) return;
         sel.lang = b.dataset.lang;
@@ -1929,14 +2066,37 @@ Exactly 10 items. Accurate, common vocabulary, most useful first.`;
     function startCards(list) {
         if (!list) {
             lesson = currentLesson();
-            const first = lesson.items.filter(it => missed.includes(it.key));
-            list = first.concat(lesson.items.filter(it => !missed.includes(it.key)));
+            if (lesson.level === 3) list = lesson.items.slice(); // un dialogue se lit dans l'ordre
+            else {
+                const first = lesson.items.filter(it => missed.includes(it.key));
+                list = first.concat(lesson.items.filter(it => !missed.includes(it.key)));
+            }
         }
         deck = list; ci = 0;
         show('scrCards'); setStep(2); renderCard();
     }
+    const fullScene = () => lesson.level === 3 && deck.length === lesson.items.length;
+    function bubble(w, dim) {
+        const me = w.role === 1;
+        return `<div class="flex ${me ? 'justify-end' : 'justify-start'}"><div class="max-w-[85%] rounded-2xl px-4 py-2 ${me ? 'bg-indigo-600/40 rounded-br-sm' : 'bg-slate-800 rounded-bl-sm'} ${dim ? 'opacity-70' : ''}">
+            <p class="text-xs text-slate-400">${esc(lesson.roles[w.role])}</p>
+            <p class="text-base" dir="auto">${esc(w.word)}</p>${w.roman ? `<p class="text-xs text-indigo-300">${esc(w.roman)}</p>` : ''}
+            <p class="text-xs text-slate-400">${esc(w.fr)}</p></div></div>`;
+    }
+    let listenN = 0;
     function renderCard() {
         const w = deck[ci];
+        listenN = 0;
+        const ph = !!w.phrase;
+        $('#cardImg').hidden = ph;
+        $('#cardGrid').className = ph ? 'grid gap-6 items-center' : 'grid sm:grid-cols-2 gap-6 items-center';
+        $('#cardWord').className = (ph ? 'text-2xl sm:text-3xl leading-snug' : 'text-4xl') + ' font-bold break-words min-w-0';
+        const scene = ph && lesson.level === 3;
+        $('#cardRole').hidden = !scene;
+        if (scene) $('#cardRole').textContent = lesson.roles[w.role];
+        $('#btnScene').hidden = !fullScene();
+        $('#cardThread').hidden = !(fullScene() && ci > 0);
+        $('#cardThread').innerHTML = fullScene() ? deck.slice(0, ci).map(x => bubble(x, true)).join('') : '';
         $('#cardImg').innerHTML = imgHTML(w.img);
         $('#cardWord').textContent = w.word;
         $('#cardWord').dir = lesson.lang.rtl ? 'rtl' : 'auto';
@@ -1952,7 +2112,24 @@ Exactly 10 items. Accurate, common vocabulary, most useful first.`;
         $('#btnNext').innerHTML = esc(ci === deck.length - 1 ? t('toQuiz') : t('next')) + ' <i class="fa-solid fa-arrow-right"></i>';
         sayWord(w.word);
     }
-    $('#btnListen').addEventListener('click', () => { const w = deck[ci]; speak(w.ex ? w.word + '. ' + w.ex : w.word, lesson.lang.voice, 0.8, true); });
+    // Écouter : une fois à vitesse normale, la fois suivante plus lentement
+    $('#btnListen').addEventListener('click', () => {
+        const w = deck[ci]; listenN++;
+        const rate = w.phrase ? (listenN % 2 ? 0.85 : 0.6) : 0.8;
+        speak(w.ex ? w.word + '. ' + w.ex : w.word, lesson.lang.voice, rate, true);
+    });
+    $('#btnScene').addEventListener('click', () => {
+        if (!synth) { voiceHelp('voiceFail', lesson.lang.voice); return; }
+        synth.cancel(); try { synth.resume(); } catch (e) {}
+        const v = pickVoice(lesson.lang.voice);
+        if (!v && voices.length) voiceHelp('noVoice', lesson.lang.voice);
+        lesson.items.forEach(w => {
+            const u = new SpeechSynthesisUtterance(w.word);
+            u.lang = lesson.lang.voice; u.rate = 0.85; u.pitch = w.role === 1 ? 1.15 : 0.9; if (v) u.voice = v;
+            keepAlive.push(u); synth.speak(u);
+        });
+        while (keepAlive.length > 12) keepAlive.shift();
+    });
     $('#btnPrev').addEventListener('click', () => { if (ci > 0) { ci--; renderCard(); } });
     $('#btnNext').addEventListener('click', () => { if (ci < deck.length - 1) { ci++; renderCard(); } else startQuiz(); });
 
@@ -1960,50 +2137,132 @@ Exactly 10 items. Accurate, common vocabulary, most useful first.`;
     let qs = [], qi = 0, answers = [], cur = null;
     function startQuiz() {
         const pool = lesson.items;
-        qs = shuffle(deck).map((w, i) => ({
-            w, type: i % 2 ? 'audio' : 'image',
-            opts: shuffle([w].concat(shuffle(pool.filter(x => x.key !== w.key)).slice(0, 3)))
-        }));
+        if (lesson.level === 1) {
+            qs = shuffle(deck).map((w, i) => ({
+                w, type: i % 2 ? 'audio' : 'image',
+                opts: shuffle([w].concat(shuffle(pool.filter(x => x.key !== w.key)).slice(0, 3)))
+            }));
+        } else {
+            const all = lesson.all;
+            const others = (w, list) => shuffle(list.filter(x => x.key !== w.key && x.word !== w.word && x.fr !== w.fr)).slice(0, 3);
+            const mk = (w, type) => {
+                const q = { w, type };
+                if (type === 'order') { q.order = shuffleTiles(w.tiles); q.built = []; }
+                else if (type === 'reply') {
+                    const mine = all.filter(x => x.role === 1), rest = all.filter(x => x.role !== 1 && x.role !== 0);
+                    let d = others(w, mine); if (d.length < 3) d = d.concat(others(w, rest).slice(0, 3 - d.length));
+                    q.opts = shuffle([w].concat(d));
+                } else q.opts = shuffle([w].concat(others(w, all)));
+                return q;
+            };
+            qs = [];
+            const canOrder = w => w.tiles.length >= 3;   // trop court pour un exercice de remise en ordre
+            if (lesson.level === 2) shuffle(deck).forEach((w, i) => {
+                let ty = ['order', 'choose', 'audio'][i % 3];
+                if (ty === 'order' && !canOrder(w)) ty = 'choose';
+                qs.push(mk(w, ty));
+            });
+            else deck.forEach(w => {
+                if (w.role === 1 && w.prev) { qs.push(mk(w, 'reply')); if (canOrder(w)) qs.push(mk(w, 'order')); }
+                else qs.push(mk(w, w.role === 1 && canOrder(w) ? 'order' : 'audio'));
+            });
+        }
         qi = 0; answers = [];
         show('scrQuiz'); setStep(3); renderQ();
     }
-    function optLabel(o, isImg) {
-        if (!isImg) return esc(o.fr);
+    // Mélange les blocs d'une phrase (jamais dans le bon ordre dès le départ)
+    function shuffleTiles(tiles) {
+        const idx = tiles.map((_, i) => i);
+        if (tiles.length < 2) return idx;
+        for (let k = 0; k < 10; k++) {
+            const s = shuffle(idx);
+            if (s.map(i => tiles[i]).join(' ') !== tiles.join(' ')) return s;
+        }
+        return idx.slice().reverse();
+    }
+    function optLabel(o, isTarget) {
+        if (!isTarget) return `<span dir="auto">${esc(o.fr)}</span>`;
         return `<span dir="auto">${esc(o.word)}</span>${o.roman ? `<span class="block text-sm text-slate-400">${esc(o.roman)}</span>` : ''}`;
     }
+    const sayQ = (q, fromUser) => speak(q.type === 'reply' ? q.w.prev.word : q.w.word, lesson.lang.voice, q.w.phrase ? 0.85 : 0.8, fromUser);
     function renderQ() {
         const q = qs[qi]; cur = null;
         $('#qCount').textContent = t('q', { i: qi + 1, n: qs.length });
         $('#qProgress').style.width = ((qi + 1) / qs.length * 100) + '%';
         const good = answers.filter(a => a.ok).length;
         $('#qScore').textContent = qi ? t('good', { n: good }) : '';
-        const isImg = q.type === 'image';
-        $('#qPrompt').textContent = isImg ? t('qHow', { w: q.w.fr }) : t('qEar');
-        $('#qImg').hidden = !isImg; $('#qListen').hidden = isImg;
-        if (isImg) $('#qImg').innerHTML = imgHTML(q.w.img); else sayWord(q.w.word);
-        $('#qOpts').innerHTML = q.opts.map((o, i) =>
-            `<button data-i="${i}" class="opt-btn bg-slate-800 hover:bg-indigo-600/30 border border-slate-700 rounded-xl p-4 text-lg transition min-w-0 break-words">${optLabel(o, isImg)}</button>`).join('');
+        const w = q.w, ty = q.type;
+        const prompts = { image: t('qHow', { w: w.fr }), audio: w.phrase ? t('qEarS') : t('qEar'), choose: t('qHow', { w: w.fr }),
+                          order: t('qOrder', { w: w.fr }), reply: t('qReply', { r: w.prev ? lesson.roles[w.prev.role] : '' }) };
+        $('#qPrompt').textContent = prompts[ty];
+        $('#qImg').hidden = ty !== 'image';
+        $('#qListen').hidden = ty !== 'audio';
+        $('#qCtx').hidden = ty !== 'reply';
+        if (ty === 'image') $('#qImg').innerHTML = imgHTML(w.img);
+        if (ty === 'reply') $('#qCtxText').innerHTML = `<span dir="auto">${esc(w.prev.word)}</span>${w.prev.roman ? `<span class="block text-sm text-indigo-300">${esc(w.prev.roman)}</span>` : ''}`;
+        if (ty === 'audio' || ty === 'reply') sayQ(q);
+        const box = $('#qOpts');
+        box.style.gridTemplateColumns = w.phrase ? '1fr' : '';
+        if (ty === 'order') renderOrder(q);
+        else box.innerHTML = q.opts.map((o, i) =>
+            `<button data-i="${i}" class="opt-btn bg-slate-800 hover:bg-indigo-600/30 border border-slate-700 rounded-xl p-4 ${w.phrase ? 'text-base text-start' : 'text-lg'} transition min-w-0 break-words">${optLabel(o, ty !== 'audio')}</button>`).join('');
         $('#qFeedback').hidden = true; $('#qConf').hidden = true;
     }
-    $('#qListen').addEventListener('click', () => sayWord(qs[qi].w.word, true));
-    $('#qOpts').addEventListener('click', (e) => {
-        const b = e.target.closest('.opt-btn'); if (!b || cur) return;
-        const q = qs[qi], pick = q.opts[+b.dataset.i], ok = pick === q.w;
-        cur = { w: q.w, ok };
-        document.querySelectorAll('.opt-btn').forEach((btn, i) => {
-            btn.disabled = true;
-            if (q.opts[i] === q.w) btn.className = 'opt-btn border border-emerald-400 bg-emerald-600/30 rounded-xl p-4 text-lg min-w-0 break-words';
-            else if (btn === b) btn.className = 'opt-btn border border-rose-400 bg-rose-600/30 rounded-xl p-4 text-lg min-w-0 break-words';
-            else btn.classList.add('opacity-40');
-        });
+    function renderOrder(q) {
+        const w = q.w, rtl = lesson.lang.rtl ? ' dir="rtl"' : '';
+        const tile = (i, where) => `<button data-t="${i}" data-where="${where}" class="tile-btn px-3 py-2 rounded-lg border ${where === 'b' ? 'bg-indigo-600/40 border-indigo-400' : 'bg-slate-800 border-slate-600 hover:bg-slate-700'} text-lg">${esc(w.tiles[i])}</button>`;
+        const done = q.built.length === w.tiles.length;
+        $('#qOpts').innerHTML = `
+            <p class="text-sm text-slate-400">${esc(t('tap'))}</p>
+            <div id="qBuilt"${rtl} class="min-h-[3.5rem] rounded-xl border border-dashed border-slate-600 p-2 flex flex-wrap gap-2 items-center">${q.built.map(i => tile(i, 'b')).join('')}</div>
+            <div${rtl} class="flex flex-wrap gap-2 justify-center">${q.order.filter(i => !q.built.includes(i)).map(i => tile(i, 'p')).join('')}</div>
+            <div class="flex justify-center gap-3">
+                <button id="qClear" class="px-4 py-2 rounded-full border border-slate-600 hover:bg-slate-800" ${q.built.length ? '' : 'disabled'}>${esc(t('clear'))}</button>
+                <button id="qCheck" class="px-5 py-2 rounded-full bg-indigo-600 hover:bg-indigo-500 font-semibold disabled:opacity-40" ${done ? '' : 'disabled'}>${esc(t('check'))}</button>
+            </div>`;
+    }
+    $('#qListen').addEventListener('click', () => sayQ(qs[qi], true));
+    $('#qCtxListen').addEventListener('click', () => sayQ(qs[qi], true));
+    function giveFeedback(q, ok) {
+        const w = q.w;
+        cur = { w, ok };
         const fb = $('#qFeedback');
-        const w = q.w, rom = w.roman ? ' (' + esc(w.roman) + ')' : '';
+        const rom = w.roman ? ' (' + esc(w.roman) + ')' : '';
         fb.className = 'mt-5 rounded-xl p-4 text-start border ' + (ok ? 'bg-emerald-900/30 border-emerald-500/30' : 'bg-rose-900/30 border-rose-500/30');
         fb.innerHTML = ok
             ? `<p class="font-semibold text-emerald-300">${esc(t('bravo'))} <span dir="auto">${esc(w.word)}</span>${rom} = ${esc(w.fr)}</p>`
             : `<p class="font-semibold text-rose-300">${t('was', { w: '<span dir="auto">' + esc(w.word) + '</span>' + rom })} = ${esc(w.fr)}</p>${w.tip ? `<p class="text-slate-300 text-sm mt-1">${esc(w.tip)}</p>` : ''}`;
         fb.hidden = false; $('#qConf').hidden = false;
-        if (!ok) sayWord(w.word);
+        if (!ok || w.phrase) sayWord(w.word);
+    }
+    $('#qOpts').addEventListener('click', (e) => {
+        const q = qs[qi]; if (cur) return;
+        if (q.type === 'order') {
+            const tb = e.target.closest('.tile-btn');
+            if (tb) {
+                const i = +tb.dataset.t;
+                if (tb.dataset.where === 'p') q.built.push(i); else q.built.splice(q.built.indexOf(i), 1);
+                renderOrder(q); return;
+            }
+            if (e.target.closest('#qClear')) { q.built = []; renderOrder(q); return; }
+            if (e.target.closest('#qCheck')) {
+                const ok = q.built.map(i => q.w.tiles[i]).join(' ') === q.w.tiles.join(' ');
+                document.querySelectorAll('#qOpts button').forEach(b => { b.disabled = true; });
+                $('#qBuilt').className += ok ? ' border-emerald-400 bg-emerald-600/30' : ' border-rose-400 bg-rose-600/30';
+                giveFeedback(q, ok);
+            }
+            return;
+        }
+        const b = e.target.closest('.opt-btn'); if (!b) return;
+        const pick = q.opts[+b.dataset.i], ok = pick === q.w;
+        const big = q.w.phrase ? 'text-base text-start' : 'text-lg';
+        document.querySelectorAll('.opt-btn').forEach((btn, i) => {
+            btn.disabled = true;
+            if (q.opts[i] === q.w) btn.className = `opt-btn border border-emerald-400 bg-emerald-600/30 rounded-xl p-4 ${big} min-w-0 break-words`;
+            else if (btn === b) btn.className = `opt-btn border border-rose-400 bg-rose-600/30 rounded-xl p-4 ${big} min-w-0 break-words`;
+            else btn.classList.add('opacity-40');
+        });
+        giveFeedback(q, ok);
     });
     document.querySelectorAll('.conf-btn').forEach(b => b.addEventListener('click', () => {
         if (!cur) return;
@@ -2020,8 +2279,10 @@ Exactly 10 items. Accurate, common vocabulary, most useful first.`;
         const pct = Math.round(good / n * 100);
         const sure = answers.filter(a => a.sure).length;
         const calib = answers.filter(a => a.ok === a.sure).length;
-        missedNow = answers.filter(a => !a.ok).map(a => a.w);
-        const okKeys = answers.filter(a => a.ok).map(a => a.w.key);
+        const wrongKeys = new Set(answers.filter(a => !a.ok).map(a => a.w.key));
+        missedNow = [];
+        answers.forEach(a => { if (wrongKeys.has(a.w.key) && !missedNow.includes(a.w)) missedNow.push(a.w); });
+        const okKeys = answers.filter(a => a.ok && !wrongKeys.has(a.w.key)).map(a => a.w.key);
         missed = missed.filter(k => !okKeys.includes(k)).concat(missedNow.map(w => w.key).filter(k => !missed.includes(k)));
         store.set('hl-missed2', missed);
 
@@ -2035,6 +2296,8 @@ Exactly 10 items. Accurate, common vocabulary, most useful first.`;
         $('#resConf').textContent = t('rConf', { p: Math.round(sure / n * 100) });
         $('#resCalib').textContent = t('rCal', { c: calib, n });
         $('#resMissedWrap').hidden = !missedNow.length;
+        $('#resMissedWrap h3').textContent = t(lesson.level > 1 ? 'rMissP' : 'rMiss');
+        $('#btnReview span').textContent = t(lesson.level > 1 ? 'rRevP' : 'rRev');
         $('#btnReview').hidden = !missedNow.length;
         $('#resMissed').innerHTML = missedNow.map(w =>
             `<li class="flex items-center gap-3 bg-slate-800/60 rounded-xl p-3"><div class="card-img mini w-12 h-12 shrink-0">${imgHTML(w.img)}</div><div class="min-w-0"><p><span class="font-semibold" dir="auto">${esc(w.word)}</span>${w.roman ? ' <span class="text-indigo-300">' + esc(w.roman) + '</span>' : ''} <span class="text-slate-400">· ${esc(w.fr)}</span></p>${w.tip ? `<p class="text-sm text-slate-400">${esc(w.tip)}</p>` : ''}</div></li>`).join('');
