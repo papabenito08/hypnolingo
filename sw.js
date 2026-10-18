@@ -1,5 +1,5 @@
 // Service worker : met en cache l'appli pour qu'elle fonctionne hors ligne
-const CACHE = 'hypnolingo-v9';
+const CACHE = 'hypnolingo-v10';
 const FILES = ['./', './index.html', './i18n.js', './library.js', './phrases.js', './manifest.json', './icon.svg', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', (e) => {

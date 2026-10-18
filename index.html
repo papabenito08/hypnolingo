@@ -55,6 +55,7 @@
     --color-slate-900: oklch(20.8% 0.042 265.755);
     --color-white: #fff;
     --spacing: 0.25rem;
+    --container-xs: 20rem;
     --container-md: 28rem;
     --container-3xl: 48rem;
     --text-xs: 0.75rem;
@@ -78,6 +79,7 @@
     --font-weight-bold: 700;
     --tracking-widest: 0.1em;
     --leading-snug: 1.375;
+    --leading-relaxed: 1.625;
     --radius-sm: 0.25rem;
     --radius-lg: 0.5rem;
     --radius-xl: 0.75rem;
@@ -338,6 +340,9 @@
   .h-8 {
     height: calc(var(--spacing) * 8);
   }
+  .h-9 {
+    height: calc(var(--spacing) * 9);
+  }
   .h-10 {
     height: calc(var(--spacing) * 10);
   }
@@ -374,6 +379,9 @@
   .w-8 {
     width: calc(var(--spacing) * 8);
   }
+  .w-9 {
+    width: calc(var(--spacing) * 9);
+  }
   .w-10 {
     width: calc(var(--spacing) * 10);
   }
@@ -403,6 +411,9 @@
   }
   .max-w-\[60\%\] {
     max-width: 60%;
+  }
+  .max-w-\[60vw\] {
+    max-width: 60vw;
   }
   .max-w-\[85\%\] {
     max-width: 85%;
@@ -557,6 +568,12 @@
     border-color: color-mix(in srgb, oklch(62.7% 0.265 303.9) 20%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       border-color: color-mix(in oklab, var(--color-purple-500) 20%, transparent);
+    }
+  }
+  .border-purple-500\/30 {
+    border-color: color-mix(in srgb, oklch(62.7% 0.265 303.9) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-purple-500) 30%, transparent);
     }
   }
   .border-purple-500\/40 {
@@ -809,6 +826,10 @@
     font-size: var(--text-xs);
     line-height: var(--tw-leading, var(--text-xs--line-height));
   }
+  .leading-relaxed {
+    --tw-leading: var(--leading-relaxed);
+    line-height: var(--leading-relaxed);
+  }
   .leading-snug {
     --tw-leading: var(--leading-snug);
     line-height: var(--leading-snug);
@@ -895,6 +916,9 @@
   }
   .accent-indigo-500 {
     accent-color: var(--color-indigo-500);
+  }
+  .accent-purple-500 {
+    accent-color: var(--color-purple-500);
   }
   .opacity-40 {
     opacity: 40%;
@@ -1033,6 +1057,9 @@
     }
     .sm\:w-28 {
       width: calc(var(--spacing) * 28);
+    }
+    .sm\:max-w-xs {
+      max-width: var(--container-xs);
     }
     .sm\:grid-cols-2 {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1521,6 +1548,28 @@
                     <span><i class="fa-solid fa-comment-dots text-indigo-300 mr-2"></i><span data-i18n="vGuide">Voix qui guide la respiration</span></span>
                     <input type="checkbox" id="voiceGuide" checked class="w-5 h-5 accent-indigo-500">
                 </label>
+                <div class="sm:col-span-2 bg-cardbg border border-purple-500/30 rounded-xl p-4 text-sm space-y-3">
+                    <p class="font-semibold"><i class="fa-solid fa-headphones text-purple-300 mr-2"></i><span data-i18n="vSet">Les voix</span></p>
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <span id="vLearnLbl" class="text-slate-300"></span>
+                        <div class="flex items-center gap-2 min-w-0">
+                            <select id="voiceLearn" class="bg-slate-800 border border-slate-700 rounded-lg p-2 max-w-[60vw] sm:max-w-xs"></select>
+                            <button type="button" id="voiceLearnTest" class="w-9 h-9 shrink-0 rounded-full bg-indigo-600 hover:bg-indigo-500 flex items-center justify-center" data-i18n-aria="vTest" aria-label="Écouter"><i class="fa-solid fa-play"></i></button>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <span class="text-slate-300" data-i18n="vGuideV">Voix du guide</span>
+                        <div class="flex items-center gap-2 min-w-0">
+                            <select id="voiceUi" class="bg-slate-800 border border-slate-700 rounded-lg p-2 max-w-[60vw] sm:max-w-xs"></select>
+                            <button type="button" id="voiceUiTest" class="w-9 h-9 shrink-0 rounded-full bg-indigo-600 hover:bg-indigo-500 flex items-center justify-center" data-i18n-aria="vTest" aria-label="Écouter"><i class="fa-solid fa-play"></i></button>
+                        </div>
+                    </div>
+                    <label class="flex items-center justify-between gap-3">
+                        <span class="text-slate-300" data-i18n="vSoft">Douceur de la voix</span>
+                        <input type="range" id="voiceSoft" min="0" max="1" step="0.1" value="0.6" class="accent-purple-500 w-40">
+                    </label>
+                    <p class="text-slate-400 text-xs leading-relaxed" data-i18n="vTip">Astuce : les voix « améliorées » ou « premium » sont beaucoup plus douces.</p>
+                </div>
             </div>
         </section>
 
@@ -1826,15 +1875,36 @@
         };
         document.addEventListener('touchend', unlock, true); document.addEventListener('click', unlock, true);
     }
+    // Choix de la voix : la plus douce disponible sur l'appareil, ou celle choisie dans les réglages
+    const normL = s => (s || '').replace('_', '-').toLowerCase();
+    const baseOf = l => { const b = normL(l).slice(0, 2); return b === 'nb' ? 'no' : b; };
+    const voicesFor = lang => { const b = baseOf(lang); return voices.filter(v => baseOf(v.lang) === b); };
+    const SOFT = /natural|neural|premium|enhanced|améliorée|amelioree|verbesserte|mejorada|wavenet|studio|online|siri/i;
+    const SOFT_NAMES = /am[ée]lie|audrey|aur[ée]lie|marie|julie|denise|hortense|c[ée]line|eloise|vivienne|samantha|ava|allison|serena|sonia|libby|kate|stephanie|moira|karen|tessa|fiona|m[óo]nica|paulina|marisol|elvira|helena|lucia|tingting|meijia|xiaoxiao|xiaoyi|huihui|kyoko|nanami|o-ren|yuna|sunhi|milena|svetlana|dariya|katya|laila|zariyah|hoda|amina|nora|iselin|pernille|anna|petra|katja|alice|federica|elsa|joana|luciana|francisca/i;
+    const BAD = /compact|eloquence|espeak|grandpa|grandma|bad news|bells|boing|bubbles|cellos|whisper|zarvox|trinoids|jester|organ|superstar|wobble|albert|fred|junior|ralph|kathy|bahh|good news|hysterical|deranged|pipe|princess|rocko|shelley|flo|reed|sandy/i;
+    function voiceScore(v, lang) {
+        let sc = 0;
+        if (normL(v.lang) === normL(lang)) sc += 10;
+        if (SOFT.test(v.name)) sc += 40;
+        if (SOFT_NAMES.test(v.name)) sc += 20;
+        if (/female|femme|frau|mujer|donna/i.test(v.name)) sc += 10;
+        if (BAD.test(v.name)) sc -= 80;
+        if (v.localService) sc += 3;          // marche hors ligne
+        return sc;
+    }
+    let voicePref = store.get('hl-voice', {}); // { "fr": voiceURI, ... }
     function pickVoice(lang) {
         if (!synth) return null;
         if (!voices.length) loadVoices();
-        const norm = s => (s || '').replace('_', '-').toLowerCase();
-        const want = norm(lang), base = want.slice(0, 2);
-        const alt = base === 'nb' ? 'no' : base === 'no' ? 'nb' : base;
-        return voices.find(v => norm(v.lang) === want) ||
-               voices.find(v => { const l = norm(v.lang); return l.startsWith(base) || l.startsWith(alt); }) || null;
+        const list = voicesFor(lang);
+        if (!list.length) return null;
+        const chosen = voicePref[baseOf(lang)];
+        if (chosen) { const v = list.find(x => x.voiceURI === chosen); if (v) return v; }
+        return list.slice().sort((x, y) => voiceScore(y, lang) - voiceScore(x, lang))[0];
     }
+    // Douceur : ralentit et adoucit le ton (0 = normal, 1 = très doux)
+    const softness = () => { const v = +store.get('hl-soft', 0.6); return isNaN(v) ? 0.6 : v; };
+    const tune = (rate) => ({ rate: Math.max(0.5, (rate || 0.9) - 0.18 * softness()), pitch: 1 - 0.14 * softness() });
     let helpShown = {};
     function voiceHelp(key, lang) {
         const id = key + lang; if (helpShown[id]) return; helpShown[id] = true;
@@ -1850,7 +1920,8 @@
         if (!text) return;
         if (!synth) { if (fromUser) voiceHelp('voiceFail', lang); return; }
         const u = new SpeechSynthesisUtterance(text);
-        u.lang = lang; u.rate = rate || 0.9; u.volume = 1;
+        const tn = tune(rate);
+        u.lang = lang; u.rate = tn.rate; u.pitch = tn.pitch; u.volume = 1;
         const v = pickVoice(lang);
         if (v) u.voice = v; else if (fromUser && voices.length) voiceHelp('noVoice', lang);
         u.onerror = (e) => { if (fromUser && e && e.error && !/interrupted|canceled/.test(e.error)) voiceHelp('voiceFail', lang); };
@@ -1862,6 +1933,53 @@
         // Après un « cancel », Chrome Android avale la phrase suivante si on la lance tout de suite
         if (busy) setTimeout(() => synth.speak(u), 120); else synth.speak(u);
     }
+    // Voix du guide : phrase par phrase, lente et grave, avec de vraies pauses
+    let calmTimer = null;
+    function speakCalm(text, lang) {
+        if (!synth || !text) return;
+        clearTimeout(calmTimer);
+        synth.cancel(); try { synth.resume(); } catch (e) {}
+        const parts = text.split(/(?<=[.!?。！？])\s*/).map(x => x.trim()).filter(Boolean);
+        const v = pickVoice(lang), soft = softness();
+        let i = 0;
+        const next = () => {
+            if (i >= parts.length) return;
+            const u = new SpeechSynthesisUtterance(parts[i++]);
+            u.lang = lang; u.rate = Math.max(0.5, 0.82 - 0.14 * soft); u.pitch = 0.92 - 0.12 * soft; u.volume = 0.95;
+            if (v) u.voice = v;
+            u.onend = () => { calmTimer = setTimeout(next, 650 + 900 * soft); };
+            keepAlive.push(u); if (keepAlive.length > 8) keepAlive.shift();
+            synth.speak(u);
+        };
+        next();
+    }
+    // ---------- Réglages des voix ----------
+    function voiceOptions(sel, lang) {
+        const list = voicesFor(lang).slice().sort((x, y) => voiceScore(y, lang) - voiceScore(x, lang));
+        const cur = voicePref[baseOf(lang)] || '';
+        sel.innerHTML = `<option value="">${esc(t('vAuto'))}</option>` + list.map(v =>
+            `<option value="${esc(v.voiceURI)}"${v.voiceURI === cur ? ' selected' : ''}>${esc(v.name.replace(/^(Microsoft|Google)\s+/, ''))}${v.localService ? '' : ' ☁'}</option>`).join('');
+        sel.disabled = !list.length;
+    }
+    function renderVoiceSettings() {
+        if (!$('#voiceLearn')) return;
+        const L = langOf(sel.lang);
+        $('#vLearnLbl').textContent = L.flag + ' ' + LANG_ENDONYM[L.code];
+        voiceOptions($('#voiceLearn'), L.voice);
+        voiceOptions($('#voiceUi'), uiInfo().voice);
+        $('#voiceSoft').value = softness();
+    }
+    function savePref(lang, uri) { voicePref[baseOf(lang)] = uri; if (!uri) delete voicePref[baseOf(lang)]; store.set('hl-voice', voicePref); }
+    $('#voiceLearn').addEventListener('change', e => { savePref(langOf(sel.lang).voice, e.target.value); });
+    $('#voiceUi').addEventListener('change', e => { savePref(uiInfo().voice, e.target.value); });
+    $('#voiceSoft').addEventListener('change', e => { store.set('hl-soft', +e.target.value); });
+    $('#voiceLearnTest').addEventListener('click', () => {
+        const L = langOf(sel.lang), th = THEMES.find(x => x.id === (sel.theme.startsWith('custom:') ? 'resto' : sel.theme)) || THEMES[1];
+        speak(PHRASES[L.code][th.id].l[0][0].replace(NOSPACE[L.code] ? / /g : /^$/, ''), L.voice, 0.85, true);
+    });
+    $('#voiceUiTest').addEventListener('click', () => speakCalm(t('vIntro'), uiInfo().voice));
+    if (synth && synth.addEventListener) synth.addEventListener('voiceschanged', () => renderVoiceSettings());
+
     let lesson = null;
     const sayWord = (w, fromUser) => speak(w, lesson.lang.voice, 0.8, fromUser);
 
@@ -1881,6 +1999,7 @@
         }).join('');
         $('#lvlNote').hidden = !(isCustom && sel.level > 1);
         $('#lvlNote').textContent = t('lvlAi');
+        renderVoiceSettings();
         const n = L.items.filter(it => missed.includes(it.key)).length;
         $('#reviewNote').hidden = !n;
         if (n) $('#reviewNote').textContent = n > 1 ? t('revN', { n }) : t('rev1');
@@ -1938,7 +2057,7 @@
     $('#btnStart').addEventListener('click', startBreath);
     $('#btnSkipToCards').addEventListener('click', () => { startSound(); startCards(); });
     $('#btnLogo').addEventListener('click', goHome);
-    function goHome() { stopBreath(); if (synth) synth.cancel(); renderHome(); show('scrHome'); }
+    function goHome() { stopBreath(); clearTimeout(calmTimer); if (synth) synth.cancel(); renderHome(); show('scrHome'); }
 
     // ---------- Sujet libre par IA ----------
     let sampleFn = null;
@@ -2036,7 +2155,7 @@ Exactly 10 items. Accurate, common vocabulary, most useful first.`;
         lesson = currentLesson();
         show('scrBreath'); setStep(1); startSound();
         breathEnd = Date.now() + (+$('#breathLen').value) * 60000;
-        if (guide()) speak(t('vIntro'), uiInfo().voice, 0.85);
+        if (guide()) speakCalm(t('vIntro'), uiInfo().voice);
         cycle(); tick();
         breathTimer = setInterval(tick, 250);
     }
@@ -2056,10 +2175,10 @@ Exactly 10 items. Accurate, common vocabulary, most useful first.`;
     function stopBreath() { clearInterval(breathTimer); clearTimeout(phaseTimer); breathTimer = null; }
     function endBreath() {
         stopBreath();
-        if (guide()) speak(t('vEnd'), uiInfo().voice, 0.9);
+        if (guide()) speakCalm(t('vEnd'), uiInfo().voice);
         setTimeout(() => startCards(), guide() ? 2500 : 0);
     }
-    $('#btnEndBreath').addEventListener('click', () => { stopBreath(); if (synth) synth.cancel(); startCards(); });
+    $('#btnEndBreath').addEventListener('click', () => { stopBreath(); clearTimeout(calmTimer); if (synth) synth.cancel(); startCards(); });
 
     // ---------- Étape 2 : cartes ----------
     let deck = [], ci = 0;
@@ -2125,7 +2244,7 @@ Exactly 10 items. Accurate, common vocabulary, most useful first.`;
         if (!v && voices.length) voiceHelp('noVoice', lesson.lang.voice);
         lesson.items.forEach(w => {
             const u = new SpeechSynthesisUtterance(w.word);
-            u.lang = lesson.lang.voice; u.rate = 0.85; u.pitch = w.role === 1 ? 1.15 : 0.9; if (v) u.voice = v;
+            const tn = tune(0.85); u.lang = lesson.lang.voice; u.rate = tn.rate; u.pitch = tn.pitch * (w.role === 1 ? 1.12 : 0.92); if (v) u.voice = v;
             keepAlive.push(u); synth.speak(u);
         });
         while (keepAlive.length > 12) keepAlive.shift();
@@ -2301,7 +2420,7 @@ Exactly 10 items. Accurate, common vocabulary, most useful first.`;
         $('#btnReview').hidden = !missedNow.length;
         $('#resMissed').innerHTML = missedNow.map(w =>
             `<li class="flex items-center gap-3 bg-slate-800/60 rounded-xl p-3"><div class="card-img mini w-12 h-12 shrink-0">${imgHTML(w.img)}</div><div class="min-w-0"><p><span class="font-semibold" dir="auto">${esc(w.word)}</span>${w.roman ? ' <span class="text-indigo-300">' + esc(w.roman) + '</span>' : ''} <span class="text-slate-400">· ${esc(w.fr)}</span></p>${w.tip ? `<p class="text-sm text-slate-400">${esc(w.tip)}</p>` : ''}</div></li>`).join('');
-        if (guide()) speak(pct >= 70 ? t('vGood') : t('vOk'), uiInfo().voice, 0.9);
+        if (guide()) speakCalm(pct >= 70 ? t('vGood') : t('vOk'), uiInfo().voice);
     }
     $('#btnReview').addEventListener('click', () => startCards(missedNow));
     $('#btnHome').addEventListener('click', goHome);
