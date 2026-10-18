@@ -679,3 +679,30 @@ for (const code in MEAN) {
     ['salut', 'resto', 'voyage', 'sante', 'courses', 'famille', 'maison', 'travail', 'meteo', 'nombres']
         .forEach((id, i) => { MEANING[code][id] = lines[i].split('|'); });
 }
+
+// Messages d'aide quand la voix ne marche pas
+(function () {
+    const V = {
+        fr: ['Ton téléphone n’a pas de voix pour : {lang}. Ajoute-la dans Réglages > Synthèse vocale (ou Voix), puis relance l’appli.', 'Le son de la voix ne sort pas. Monte le volume, coupe le mode silencieux, puis touche à nouveau Écouter.'],
+        en: ['Your phone has no voice for: {lang}. Add it in Settings > Text-to-speech (or Voices), then reopen the app.', 'No voice sound. Turn the volume up, switch off silent mode, then tap Listen again.'],
+        es: ['Tu teléfono no tiene voz para: {lang}. Añádela en Ajustes > Síntesis de voz (o Voces) y vuelve a abrir la app.', 'No se oye la voz. Sube el volumen, quita el modo silencio y vuelve a tocar Escuchar.'],
+        de: ['Dein Handy hat keine Stimme für: {lang}. Füge sie unter Einstellungen > Sprachausgabe (oder Stimmen) hinzu und öffne die App neu.', 'Keine Sprachausgabe zu hören. Lauter stellen, Stummmodus ausschalten und erneut auf Anhören tippen.'],
+        it: ['Il telefono non ha una voce per: {lang}. Aggiungila in Impostazioni > Sintesi vocale (o Voci) e riapri l’app.', 'La voce non si sente. Alza il volume, togli il silenzioso e tocca di nuovo Ascolta.'],
+        pt: ['O telemóvel não tem voz para: {lang}. Adicione-a em Definições > Síntese de voz (ou Vozes) e reabra a app.', 'A voz não se ouve. Aumente o volume, desligue o modo silencioso e toque novamente em Ouvir.'],
+        nl: ['Je telefoon heeft geen stem voor: {lang}. Voeg die toe via Instellingen > Tekst-naar-spraak (of Stemmen) en open de app opnieuw.', 'Geen stemgeluid. Zet het volume hoger, schakel stil uit en tik opnieuw op Luisteren.'],
+        pl: ['Telefon nie ma głosu dla: {lang}. Dodaj go w Ustawienia > Zamiana tekstu na mowę (lub Głosy) i uruchom aplikację ponownie.', 'Nie słychać głosu. Zwiększ głośność, wyłącz tryb cichy i dotknij Posłuchaj ponownie.'],
+        sv: ['Telefonen saknar röst för: {lang}. Lägg till den under Inställningar > Text till tal (eller Röster) och öppna appen igen.', 'Rösten hörs inte. Höj volymen, stäng av ljudlöst läge och tryck på Lyssna igen.'],
+        ru: ['На телефоне нет голоса для языка: {lang}. Добавьте его в Настройки > Синтез речи (или Голоса) и перезапустите приложение.', 'Голос не слышен. Увеличьте громкость, выключите беззвучный режим и снова нажмите «Слушать».'],
+        uk: ['На телефоні немає голосу для мови: {lang}. Додайте його в Налаштування > Синтез мовлення (або Голоси) і перезапустіть застосунок.', 'Голосу не чути. Збільште гучність, вимкніть беззвучний режим і знову натисніть «Слухати».'],
+        tr: ['Telefonunda şu dil için ses yok: {lang}. Ayarlar > Metin okuma (veya Sesler) bölümünden ekle, sonra uygulamayı yeniden aç.', 'Ses gelmiyor. Sesi aç, sessiz modu kapat ve tekrar Dinle’ye dokun.'],
+        ar: ['لا يوجد صوت في هاتفك للغة: {lang}. أضفه من الإعدادات > تحويل النص إلى كلام (أو الأصوات) ثم أعد فتح التطبيق.', 'لا يُسمع الصوت. ارفع مستوى الصوت وأوقف الوضع الصامت ثم اضغط استمع مرة أخرى.'],
+        hi: ['आपके फ़ोन में इस भाषा की आवाज़ नहीं है: {lang}। सेटिंग्स > टेक्स्ट-टू-स्पीच (या आवाज़ें) में जोड़ें, फिर ऐप दोबारा खोलें।', 'आवाज़ नहीं आ रही। वॉल्यूम बढ़ाएँ, साइलेंट मोड बंद करें और फिर से सुनें दबाएँ।'],
+        zh: ['你的手机没有此语言的语音：{lang}。请在 设置 > 文字转语音（或 语音）中添加，然后重新打开应用。', '听不到语音。请调高音量、关闭静音模式，然后再次点击“收听”。'],
+        ja: ['この言語の音声が端末にありません：{lang}。設定 > 読み上げ（または 音声）で追加してから、アプリを開き直してください。', '音声が聞こえません。音量を上げ、マナーモードを解除して、もう一度「聞く」をタップしてください。'],
+        ko: ['휴대폰에 이 언어의 음성이 없습니다: {lang}. 설정 > 텍스트 음성 변환(또는 음성)에서 추가한 뒤 앱을 다시 여세요.', '음성이 들리지 않습니다. 볼륨을 높이고 무음 모드를 끈 다음 다시 듣기를 누르세요.'],
+        id: ['Ponselmu tidak punya suara untuk: {lang}. Tambahkan di Setelan > Teks ke ucapan (atau Suara), lalu buka ulang aplikasi.', 'Suara tidak terdengar. Naikkan volume, matikan mode senyap, lalu ketuk Dengarkan lagi.'],
+        vi: ['Điện thoại chưa có giọng đọc cho: {lang}. Hãy thêm trong Cài đặt > Chuyển văn bản thành giọng nói (hoặc Giọng nói), rồi mở lại ứng dụng.', 'Không nghe thấy giọng đọc. Hãy tăng âm lượng, tắt chế độ im lặng rồi chạm Nghe lại.'],
+        th: ['โทรศัพท์ของคุณไม่มีเสียงสำหรับภาษา: {lang} เพิ่มได้ที่ การตั้งค่า > การอ่านออกเสียง (หรือ เสียง) แล้วเปิดแอปใหม่', 'ไม่ได้ยินเสียง เพิ่มระดับเสียง ปิดโหมดเงียบ แล้วแตะ ฟัง อีกครั้ง']
+    };
+    for (const k in V) if (UI[k]) { UI[k].noVoice = V[k][0]; UI[k].voiceFail = V[k][1]; }
+})();

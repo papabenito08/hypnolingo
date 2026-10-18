@@ -1691,25 +1691,58 @@
     $('#soundVol').addEventListener('input', () => { if (master) master.gain.setTargetAtTime(vol(), ctx.currentTime, 0.1); });
 
     // ---------- Voix (synthèse vocale de l'appareil) ----------
-    const synth = window.speechSynthesis;
+    const synth = ('speechSynthesis' in window && 'SpeechSynthesisUtterance' in window) ? window.speechSynthesis : null;
+    let voices = [];
+    const keepAlive = []; // garde les phrases en mémoire (sinon Chrome peut les couper)
+    function loadVoices() { try { voices = synth.getVoices() || []; } catch (e) { voices = []; } }
+    if (synth) {
+        loadVoices();
+        if (synth.addEventListener) synth.addEventListener('voiceschanged', loadVoices); else synth.onvoiceschanged = loadVoices;
+        // iPhone : la voix doit être « débloquée » par un premier toucher
+        const unlock = () => {
+            try { const u = new SpeechSynthesisUtterance(' '); u.volume = 0; synth.speak(u); } catch (e) {}
+            document.removeEventListener('touchend', unlock, true); document.removeEventListener('click', unlock, true);
+        };
+        document.addEventListener('touchend', unlock, true); document.addEventListener('click', unlock, true);
+    }
     function pickVoice(lang) {
         if (!synth) return null;
-        const vs = synth.getVoices();
-        const base = lang.slice(0, 2).toLowerCase();
-        return vs.find(v => v.lang.replace('_', '-') === lang) ||
-               vs.find(v => v.lang.toLowerCase().startsWith(base) || (base === 'nb' && v.lang.toLowerCase().startsWith('no')));
+        if (!voices.length) loadVoices();
+        const norm = s => (s || '').replace('_', '-').toLowerCase();
+        const want = norm(lang), base = want.slice(0, 2);
+        const alt = base === 'nb' ? 'no' : base === 'no' ? 'nb' : base;
+        return voices.find(v => norm(v.lang) === want) ||
+               voices.find(v => { const l = norm(v.lang); return l.startsWith(base) || l.startsWith(alt); }) || null;
     }
-    function speak(text, lang, rate) {
-        if (!synth || !text) return;
-        synth.cancel();
+    let helpShown = {};
+    function voiceHelp(key, lang) {
+        const id = key + lang; if (helpShown[id]) return; helpShown[id] = true;
+        let base = (lang || '').slice(0, 2).toLowerCase(); if (base === 'nb') base = 'no';
+        let name = LANG_ENDONYM[base];
+        if (!name) { try { name = new Intl.DisplayNames([base], { type: 'language' }).of(base); } catch (e) { name = lang || ''; } }
+        const el = $('#voiceToast');
+        el.textContent = t(key, { lang: name });
+        el.hidden = false;
+        clearTimeout(el._t); el._t = setTimeout(() => { el.hidden = true; }, 9000);
+    }
+    function speak(text, lang, rate, fromUser) {
+        if (!text) return;
+        if (!synth) { if (fromUser) voiceHelp('voiceFail', lang); return; }
         const u = new SpeechSynthesisUtterance(text);
-        u.lang = lang; u.rate = rate || 0.9;
-        const v = pickVoice(lang); if (v) u.voice = v;
-        synth.speak(u);
+        u.lang = lang; u.rate = rate || 0.9; u.volume = 1;
+        const v = pickVoice(lang);
+        if (v) u.voice = v; else if (fromUser && voices.length) voiceHelp('noVoice', lang);
+        u.onerror = (e) => { if (fromUser && e && e.error && !/interrupted|canceled/.test(e.error)) voiceHelp('voiceFail', lang); };
+        u.onend = () => { const i = keepAlive.indexOf(u); if (i >= 0) keepAlive.splice(i, 1); };
+        keepAlive.push(u); if (keepAlive.length > 6) keepAlive.shift();
+        const busy = synth.speaking || synth.pending;
+        if (busy) synth.cancel();
+        try { synth.resume(); } catch (e) {}
+        // Après un « cancel », Chrome Android avale la phrase suivante si on la lance tout de suite
+        if (busy) setTimeout(() => synth.speak(u), 120); else synth.speak(u);
     }
-    if (synth) synth.onvoiceschanged = () => {};
     let lesson = null;
-    const sayWord = (w) => speak(w, lesson.lang.voice, 0.8);
+    const sayWord = (w, fromUser) => speak(w, lesson.lang.voice, 0.8, fromUser);
 
     // ---------- Accueil ----------
     function renderHome() {
@@ -1917,9 +1950,9 @@ Exactly 10 items. Accurate, common vocabulary, most useful first.`;
         $('#cardReview').hidden = !missed.includes(w.key);
         $('#btnPrev').disabled = ci === 0;
         $('#btnNext').innerHTML = esc(ci === deck.length - 1 ? t('toQuiz') : t('next')) + ' <i class="fa-solid fa-arrow-right"></i>';
-        setTimeout(() => sayWord(w.word), 300);
+        sayWord(w.word);
     }
-    $('#btnListen').addEventListener('click', () => { const w = deck[ci]; speak(w.ex ? w.word + '. ' + w.ex : w.word, lesson.lang.voice, 0.8); });
+    $('#btnListen').addEventListener('click', () => { const w = deck[ci]; speak(w.ex ? w.word + '. ' + w.ex : w.word, lesson.lang.voice, 0.8, true); });
     $('#btnPrev').addEventListener('click', () => { if (ci > 0) { ci--; renderCard(); } });
     $('#btnNext').addEventListener('click', () => { if (ci < deck.length - 1) { ci++; renderCard(); } else startQuiz(); });
 
@@ -1947,12 +1980,12 @@ Exactly 10 items. Accurate, common vocabulary, most useful first.`;
         const isImg = q.type === 'image';
         $('#qPrompt').textContent = isImg ? t('qHow', { w: q.w.fr }) : t('qEar');
         $('#qImg').hidden = !isImg; $('#qListen').hidden = isImg;
-        if (isImg) $('#qImg').innerHTML = imgHTML(q.w.img); else setTimeout(() => sayWord(q.w.word), 300);
+        if (isImg) $('#qImg').innerHTML = imgHTML(q.w.img); else sayWord(q.w.word);
         $('#qOpts').innerHTML = q.opts.map((o, i) =>
             `<button data-i="${i}" class="opt-btn bg-slate-800 hover:bg-indigo-600/30 border border-slate-700 rounded-xl p-4 text-lg transition min-w-0 break-words">${optLabel(o, isImg)}</button>`).join('');
         $('#qFeedback').hidden = true; $('#qConf').hidden = true;
     }
-    $('#qListen').addEventListener('click', () => sayWord(qs[qi].w.word));
+    $('#qListen').addEventListener('click', () => sayWord(qs[qi].w.word, true));
     $('#qOpts').addEventListener('click', (e) => {
         const b = e.target.closest('.opt-btn'); if (!b || cur) return;
         const q = qs[qi], pick = q.opts[+b.dataset.i], ok = pick === q.w;
@@ -2018,5 +2051,6 @@ Exactly 10 items. Accurate, common vocabulary, most useful first.`;
             window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
         }
     </script>
+<div id="voiceToast" hidden role="status" style="position:fixed;left:16px;right:16px;bottom:24px;z-index:60;max-width:28rem;margin:0 auto;border-radius:1rem;background:#fef3c7;color:#0f172a;padding:12px 16px;font-size:14px;line-height:1.4;box-shadow:0 20px 40px rgba(0,0,0,.45)"></div>
 </body>
 </html>
