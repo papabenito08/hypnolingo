@@ -1830,26 +1830,61 @@
     window.addEventListener('offline', updNet);
 
     // ---------- Fond sonore binaural (216 Hz / 220 Hz = battement de 4 Hz) ----------
-    let ctx, master, oscL, oscR;
-    const vol = () => +$('#soundVol').value * 0.35;
+    // Fond sonore : battement binaural doux (200 / 204 Hz) + souffle de vagues très léger.
+    // Grand tampon audio ("playback") pour éviter les craquements, surtout en Bluetooth.
+    let ctx, master, oscL, oscR, noiseSrc, waveLfo;
+    const vol = () => +$('#soundVol').value * 0.28;
+    function makeCtx() {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        try { return new AC({ latencyHint: 'playback' }); } catch (e) { return new AC(); }
+    }
+    function noiseBuffer(c) {
+        // bruit « brun » (grave, doux), 12 s, dont la fin rejoint le début : la boucle ne claque pas
+        const len = Math.floor(c.sampleRate * 12), buf = c.createBuffer(2, len, c.sampleRate);
+        for (let ch = 0; ch < 2; ch++) {
+            const d = buf.getChannelData(ch); let last = 0;
+            for (let i = 0; i < len; i++) { last = (last + 0.02 * (Math.random() * 2 - 1)) / 1.02; d[i] = last; }
+            const drift = d[len - 1] - d[0];
+            let peak = 0;
+            for (let i = 0; i < len; i++) { d[i] -= drift * i / (len - 1); peak = Math.max(peak, Math.abs(d[i])); }
+            for (let i = 0; i < len; i++) d[i] = d[i] / (peak || 1) * 0.9;
+        }
+        return buf;
+    }
     function startSound() {
-        if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
-        if (ctx.state === 'suspended') ctx.resume();
+        if (!ctx) {
+            ctx = makeCtx();
+            ctx.onstatechange = () => { if (oscL && ctx.state !== 'running' && ctx.state !== 'closed') ctx.resume().catch(() => {}); };
+        }
+        if (ctx.state !== 'running') ctx.resume().catch(() => {});
         if (oscL) return;
-        master = ctx.createGain(); master.gain.value = 0; master.connect(ctx.destination);
-        const merger = ctx.createChannelMerger(2); merger.connect(master);
+        const now = ctx.currentTime;
+        master = ctx.createGain(); master.gain.setValueAtTime(0, now); master.connect(ctx.destination);
+        // battement binaural : un son par oreille
+        const merger = ctx.createChannelMerger(2);
+        const toneGain = ctx.createGain(); toneGain.gain.value = 0.55;
+        merger.connect(toneGain); toneGain.connect(master);
         oscL = ctx.createOscillator(); oscR = ctx.createOscillator();
-        oscL.frequency.value = 216; oscR.frequency.value = 220;
+        oscL.type = oscR.type = 'sine';
+        oscL.frequency.value = 200; oscR.frequency.value = 204;
         oscL.connect(merger, 0, 0); oscR.connect(merger, 0, 1);
-        oscL.start(); oscR.start();
-        master.gain.setTargetAtTime(vol(), ctx.currentTime, 0.6);
+        // vagues : bruit grave filtré, dont le volume monte et descend lentement (une vague toutes les ~10 s)
+        noiseSrc = ctx.createBufferSource(); noiseSrc.buffer = noiseBuffer(ctx); noiseSrc.loop = true;
+        const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 500; lp.Q.value = 0.3;
+        const waveGain = ctx.createGain(); waveGain.gain.value = 0.22;
+        waveLfo = ctx.createOscillator(); waveLfo.frequency.value = 0.1;
+        const lfoDepth = ctx.createGain(); lfoDepth.gain.value = 0.14;
+        waveLfo.connect(lfoDepth); lfoDepth.connect(waveGain.gain);
+        noiseSrc.connect(lp); lp.connect(waveGain); waveGain.connect(master);
+        oscL.start(now); oscR.start(now); noiseSrc.start(now); waveLfo.start(now);
+        master.gain.setTargetAtTime(vol(), now, 0.8);
         updSound();
     }
     function stopSound() {
         if (!oscL) return;
-        master.gain.setTargetAtTime(0, ctx.currentTime, 0.25);
-        const a = oscL, b = oscR; oscL = oscR = null;
-        setTimeout(() => { a.stop(); b.stop(); }, 1500);
+        master.gain.setTargetAtTime(0, ctx.currentTime, 0.3);
+        const nodes = [oscL, oscR, noiseSrc, waveLfo]; oscL = oscR = noiseSrc = waveLfo = null;
+        setTimeout(() => nodes.forEach(n => { try { n.stop(); } catch (e) {} }), 1800);
         updSound();
     }
     function updSound() {
@@ -1889,7 +1924,7 @@
         if (SOFT_NAMES.test(v.name)) sc += 20;
         if (/female|femme|frau|mujer|donna/i.test(v.name)) sc += 10;
         if (BAD.test(v.name)) sc -= 80;
-        if (v.localService) sc += 3;          // marche hors ligne
+        sc += v.localService ? 3 : -15;      // les voix « en ligne » échouent souvent sur téléphone
         return sc;
     }
     let voicePref = store.get('hl-voice', {}); // { "fr": voiceURI, ... }
@@ -1924,7 +1959,20 @@
         u.lang = lang; u.rate = tn.rate; u.pitch = tn.pitch; u.volume = 1;
         const v = pickVoice(lang);
         if (v) u.voice = v; else if (fromUser && voices.length) voiceHelp('noVoice', lang);
-        u.onerror = (e) => { if (fromUser && e && e.error && !/interrupted|canceled/.test(e.error)) voiceHelp('voiceFail', lang); };
+        u.onerror = (e) => {
+            const err = (e && e.error) || '';
+            if (/interrupted|canceled/.test(err)) return;
+            // La voix choisie ne marche pas sur ce téléphone : on réessaie avec la voix par défaut du téléphone
+            if (!u._retry && u.voice) {
+                const r = new SpeechSynthesisUtterance(text);
+                r._retry = true; r.lang = lang; r.rate = rate || 0.9; r.volume = 1;
+                r.onerror = (e2) => { const er = (e2 && e2.error) || ''; if (fromUser && !/interrupted|canceled/.test(er)) voiceHelp(/language|voice/.test(er) ? 'noVoice' : 'voiceFail', lang); };
+                keepAlive.push(r);
+                setTimeout(() => synth.speak(r), 80);
+                return;
+            }
+            if (fromUser) voiceHelp(/language|voice/.test(err) ? 'noVoice' : 'voiceFail', lang);
+        };
         u.onend = () => { const i = keepAlive.indexOf(u); if (i >= 0) keepAlive.splice(i, 1); };
         keepAlive.push(u); if (keepAlive.length > 6) keepAlive.shift();
         const busy = synth.speaking || synth.pending;
