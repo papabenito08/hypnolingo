@@ -2260,7 +2260,7 @@ Exactly 10 items. Accurate, common vocabulary, most useful first.`;
     function endBreath() {
         stopBreath();
         if (guide()) guideSay('vEnd');
-        setTimeout(() => startCards(), guide() ? 3600 : 0);
+        setTimeout(() => startCards(), guide() ? 4200 : 0);
     }
     $('#btnEndBreath').addEventListener('click', () => { stopBreath(); stopGuide(); startCards(); });
 
