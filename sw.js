@@ -1,6 +1,7 @@
 // Service worker : met en cache l'appli pour qu'elle fonctionne hors ligne
-const CACHE = 'hypnolingo-v11';
+const CACHE = 'hypnolingo-v12';
 const FILES = ['./', './index.html', './i18n.js', './library.js', './phrases.js', './manifest.json', './icon.svg', './icon-192.png', './icon-512.png'];
+// Les voix enregistrées (./voice/…) sont gardées en cache dès leur premier chargement
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(FILES.map((f) => new Request(f, { cache: 'reload' })))));
